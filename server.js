@@ -21,6 +21,8 @@ connectDB();
 
 // Route files
 const auth = require('./routes/auth');
+const hopsitals = require('./routes/hospitals');
+const pdRequests = require('./routes/patientDataRequests');
 //const users = require('./routes/users');
 
 const app = express();
@@ -65,7 +67,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routers
 app.use('/api/v1/auth', auth);
-app.use('/api/v1/users', users);
+app.use('/api/v1/hospitals', hopsitals);
+app.use('/api/v1/pdrequests', pdRequests);
 
 app.use(errorHandler);
 

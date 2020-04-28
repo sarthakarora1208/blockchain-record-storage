@@ -4,9 +4,11 @@
   "description": "A Covid patient tracker app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "server": "nodemon server"
   },
-  "author": "Sarthak Arora,Pranav Garg, Varun Ramnani",
+  "author": "Sarthak Arora,Pranav Garg,Varun Ramnani,Akshit Suri",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -8,7 +8,7 @@ const User = require('../models/User');
 // @route     POST /api/v1/auth/register
 // @access    Public
 exports.register = asyncHandler(async (req, res, next) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, role, publicKey } = req.body;
   const message = 'Thank you for registering with #covidtracker';
   const sendMail = false;
   // Create user
@@ -17,6 +17,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     email,
     password,
     role,
+    publicKey,
   });
   if (sendMail) {
     await sendEmail({

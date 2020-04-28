@@ -1,7 +1,21 @@
 const Hospital = require('../models/Hospital');
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
-const path = require('path');
+
+// @desc    Get single hospital
+// @route   GET /api/v1/hospitals/:id
+//@access   Public
+
+exports.getHospital = asyncHandler(async (req, res, next) => {
+  // find hospital from the id passed
+  const hospital = await Hospital.findById(req.params.id);
+  if (!hospital) {
+    return next(
+      new ErrorResponse(`Hospital not found with id of ${req.params.id}`, 404)
+    );
+  }
+  res.status(200).json({ success: true, data: hospital });
+});
 
 // @desc    Get all hosptials
 // @route   GET /api/v1/hospitals
@@ -11,17 +25,27 @@ exports.getHospitals = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
-// @desc    Get single hospital
-// @route   GET /api/v1/hospitals/:id
+//@desc     Get unapproved Hospitals
+//@route    GET /api/v1/hospitals/unapproved
 //@access   Public
-exports.getHospital = asyncHandler(async (req, res, next) => {
-  // find hospital from the id passed
-  const hospital = await Hospital.findById(req.params.id);
-  if (!hospital) {
-    return next(
-      new ErrorResponse(`Hospital not found with id of ${req.params.id}`, 404)
-    );
-  }
+exports.getUnapprovedHospitals = asyncHandler(async (req, res, next) => {
+  let hospital = await Hospital.find({ isApproved: false });
+  res.status(200).json({ success: true, data: hospital });
+});
+
+//@desc     Get approved Hospitals
+//@route    GET /api/v1/hospitals/approved
+//@access . Public
+exports.getApprovedHospitals = asyncHandler(async (req, res, next) => {
+  let hospital = await Hospital.find({ isApproved: true });
+  res.status(200).json({ success: true, data: hospital });
+});
+
+//@desc     Get Hospital for owner
+//@route    GET /api/v1/hospitals/user
+//@access . Private
+exports.getHospitalForUser = asyncHandler(async (req, res, next) => {
+  const hospital = await Hospital.find({ user: req.user.id });
   res.status(200).json({ success: true, data: hospital });
 });
 
@@ -53,7 +77,7 @@ exports.createHospital = asyncHandler(async (req, res, next) => {
 
 //@desc     Update Hospital
 //@route    PUT /api/v1/hospitals/:id
-//@desc     Private
+//@access . Private
 exports.updateHospital = asyncHandler(async (req, res, next) => {
   let hospital = await Hospital.findById(req.params.id);
   if (!hospital) {
@@ -71,28 +95,26 @@ exports.updateHospital = asyncHandler(async (req, res, next) => {
     new: true,
     runValidators: true,
   });
-  res.status(200).json({ success: true, data: bootcamp });
+  res.status(200).json({ success: true, data: hospital });
 });
 
 //@desc     Approve Hospital
 //@route    PUT /api/v1/hospitals/:id/approve
-//@desc     Private
+//@access   Private(admin)
+
 exports.approveHospital = asyncHandler(async (req, res, next) => {
   let hospital = await Hospital.findById(req.params.id);
   if (!hospital) {
     return next(new ErrorResponse(`Hospital not found`));
   }
 
-  hospital = await Hospital.findByIdAndUpdate(req.params.id, {
-    isApproved: true,
-  });
-  res.status(200).json({ success: true, data: hospital });
-});
+  hospital = await Hospital.findByIdAndUpdate(
+    req.params.id,
+    {
+      isApproved: true,
+    },
+    { new: true }
+  );
 
-//@desc     Get unapproved Hospitals
-//@route    GET /api/v1/hospitals/unapproved
-//@desc     Private
-exports.getUnapprovedHospitals = asyncHandler(async (req, res, next) => {
-  let hospital = await Hospital.find({ isApproved: false });
   res.status(200).json({ success: true, data: hospital });
 });
