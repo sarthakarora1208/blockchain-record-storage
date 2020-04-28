@@ -12,6 +12,8 @@ const hpp = require('hpp');
 const cors = require('cors');
 const errorHandler = require('./middleware/error.js');
 const connectDB = require('./config/db');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -27,6 +29,8 @@ const pdRequests = require('./routes/patientDataRequests');
 
 const app = express();
 
+// EJS
+app.set('view engine', 'ejs');
 // Body parser
 app.use(express.json());
 
@@ -49,6 +53,18 @@ app.use(helmet());
 // Prevent XSS attacks
 app.use(xss());
 
+// Express session
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Connect flash
+app.use(flash());
+
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
@@ -66,6 +82,10 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Mount routers
+app.use('/auth');
+app.use('/users');
+app.use('/hopsitals');
+app.use('/admin');
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/hospitals', hopsitals);
 app.use('/api/v1/pdrequests', pdRequests);
