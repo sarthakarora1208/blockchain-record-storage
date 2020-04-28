@@ -11,6 +11,7 @@
   "author": "Sarthak Arora,Pranav Garg,Varun Ramnani,Akshit Suri",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "connect-flash": "^0.1.1",

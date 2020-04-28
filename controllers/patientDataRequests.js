@@ -73,7 +73,7 @@ exports.getPatientDataRequestForUser = asyncHandler(async (req, res, next) => {
 });
 
 //@desc    Approve patient data request
-//@route   PUT /api/v1/pdrequests/:id
+//@route   PUT /api/v1/pdrequests/:id/approve
 //@access  Private
 exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
   let pdrequest = await PatientDataRequest.findById(req.params.id);
@@ -81,8 +81,6 @@ exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
   if (!pdrequest) {
     return next(new ErrorResponse(`Patient data request not found`));
   }
-  console.log(req.user);
-  console.log(pdrequest);
 
   pdrequest = await PatientDataRequest.findByIdAndUpdate(
     req.params.id,

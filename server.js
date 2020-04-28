@@ -25,7 +25,12 @@ connectDB();
 const auth = require('./routes/auth');
 const hopsitals = require('./routes/hospitals');
 const pdRequests = require('./routes/patientDataRequests');
-//const users = require('./routes/users');
+
+//Frontend Route files
+const authFrontend = require('./routes/frontend/authFrontend');
+const userFrontend = require('./routes/frontend/userFrontend');
+const hospitalFrontend = require('./routes/frontend/hospitalFrontend');
+const adminFrontend = require('./routes/frontend/adminFrontend');
 
 const app = express();
 
@@ -65,11 +70,15 @@ app.use(
 // Connect flash
 app.use(flash());
 
+// Express body parser
+app.use(express.urlencoded({ extended: true }));
+
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 mins
   max: 100,
 });
+
 app.use(limiter);
 
 // Prevent http param pollution
@@ -81,11 +90,12 @@ app.use(cors());
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', (req, res) => res.redirect('/auth/login'));
 // Mount routers
-app.use('/auth');
-app.use('/users');
-app.use('/hopsitals');
-app.use('/admin');
+app.use('/auth', authFrontend);
+app.use('/users', userFrontend);
+app.use('/hopsitals', hospitalFrontend);
+app.use('/admin', adminFrontend);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/hospitals', hopsitals);
 app.use('/api/v1/pdrequests', pdRequests);
