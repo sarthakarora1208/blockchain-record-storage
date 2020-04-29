@@ -14,7 +14,7 @@ const errorHandler = require('./middleware/error.js');
 const connectDB = require('./config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
-const path = require("path");
+
     
 
 // Load env vars
