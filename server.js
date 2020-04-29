@@ -14,6 +14,8 @@ const errorHandler = require('./middleware/error.js');
 const connectDB = require('./config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
+const path = require("path");
+    
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -80,6 +82,9 @@ app.use(function (req, res, next) {
 
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
+
+//mounting public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Rate limiting
 const limiter = rateLimit({
