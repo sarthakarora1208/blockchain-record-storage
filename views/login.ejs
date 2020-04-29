@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("partials/header2") %>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-</head>
+    <!-- FORM -->
+    <div class="form1" style="margin-top: 20px;">
+        <div class="ui raised segment dimmable">
+            <div class="ui inverted dimmer">
+                <div class="content">
+                    <div class="ui text loader">Loading</div>
+                </div>
+            </div>
+            <h2 class="ui header"><i aria-hidden="true" class="user icon"></i>Login</h2>
+            <p style="color: black;"> Log in to see the data of your hospital and heck the updates.</p>
+            <div class="ui divider"></div>
+            <form id="myForm" action="#" method="GET" class="ui form">
+                <div class="field">
+                    <div class="field"><label class="ui header">Email Address</label>
+                        <div class="ui left icon input"><input id="email" aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="email" type="text" value=""><i aria-hidden="true" class="mail icon"></i></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Password</label>
+                        <div class="ui action left icon input"><input id="pwd" aria-invalid="true" style="padding: 0;" placeholder="Enter Password" name="password" type="password" value=""><i aria-hidden="true" class="lock icon"></i><button class="ui icon button"><i aria-hidden="true" class="eye icon"></i></button></div>
+                    </div>
+                </div>
+                <div onclick="onformSubmit()" class="ui primary button">Login</div>
+            </form>
+            <div class="ui divider"></div>
+            <p> <a href="/forget">Forgot Password? </a></p>
+            <p style="color: black;">Don't have an account? <a href="register.html"><button class="ui green button"> Sign up</button></a></p>
+        </div>
+    </div>
+    </header>
 
-<body>
-    <h1>Hello</h1>
-    <form action="/auth/login" method="POST">
-        <input type="text" title="email" name="email" placeholder="username" />
-        <input type="password" title="username" name="password" placeholder="password" />
-        <button type="submit" class="btn">Login</button>
-        <a class="forgot" href="#">Forgot Username?</a>
-    </form>
-</body>
-
-</html>
+    <%- include("partials/loginfooter") %>

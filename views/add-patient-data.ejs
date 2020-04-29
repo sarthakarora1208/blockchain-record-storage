@@ -1,0 +1,73 @@
+<%- include("partials/header2") %>
+
+    <!-- FORM -->
+    <div class="form1" style="margin: 0;">
+        <div class="ui raised segment dimmable">
+            <div class="ui inverted dimmer">
+                <div class="content">
+                    <div class="ui text loader">Loading</div>
+                </div>
+            </div>
+            <h2 class="ui header" style="margin: 10px;"><i style="color: lightgreen;" aria-hidden="true" class="user icon"></i>Add Patient Data</h2>
+            <p style="color: black;"> Add patient data to make him/her register in the hospital and proceed for treatment.</p>
+            <div class="ui divider"></div>
+            <form action="/user-request-data" method="POST" class="ui form">
+                <div class="field">
+                    <div class="field"><label class="ui header">Patient Name</label>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Patient Name" name="patientName" type="text" value=""><i aria-hidden="true" class="user icon"></i></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Hospital Admission ID</label>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital Admission ID" name="hospitalAdmissionId" type="text" value=""><i aria-hidden="true" class="hospital icon"></i></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Admission Date</label>
+                        <div class="ui calendar calc">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input style="padding: 0;" name="admissionDate" type="text" placeholder="Admission Date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Release Date</label>
+                        <div class="ui calendar calc">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input style="padding: 0;" name="releaseDate" type="text" placeholder="Release Date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Symptoms</label>
+                        <textarea rows="50" placeholder="Enter Symptoms" name="symptoms"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Patient's Email Address</label>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="patientEmail" type="text" value=""><i aria-hidden="true" class="mail icon"></i></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Patient's Public key</label>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Public Key" name="patientPublicKey" type="text" value=""><i aria-hidden="true" class="key icon"></i></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="field"><label class="ui header">Comemnts</label>
+                        <textarea placeholder="Enter Comments" name="comments"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="ui pink button"><div class="content">Add Data</div></button>
+            </form>
+        </div>
+    </div>
+
+    </header>
+
+    <%- include("partials/footer") %>
