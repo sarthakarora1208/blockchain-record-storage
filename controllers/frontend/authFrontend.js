@@ -14,8 +14,7 @@ exports.getLogin = asyncHandler(async (req, res, next) => {
 });
 exports.postLogin = asyncHandler(async (req, res, next) => {
   try {
-    //let data = await login(req.body);
-    let data = await login({ email: 'owner2@gmail.com', password: '123456' });
+    let data = await login(req.body);
     const { success, token } = data;
     await setAuthToken(token);
     data = await getMe();
@@ -44,15 +43,10 @@ exports.getRegister = asyncHandler(async (req, res, next) => {
 exports.postRegister = asyncHandler(async (req, res, next) => {
   try {
     //const { name, email, password, role, publicKey } = req.body;
-    let data = await register({
-      name: 'sarthakarora',
-      email: 'sarthakarora1208@gmail.com',
-      password: '123456',
-      role: 'owner',
-      publicKey: 'publickeyexample',
-    });
-
-    const { success } = data;
+    //console.log(req.body);
+    let user = await register(req.body);
+    console.log(user)
+    const { success, data} = user;
     if (success) {
       req.flash('success_msg', 'You are now registered and can log in');
       res.redirect('/auth/login');

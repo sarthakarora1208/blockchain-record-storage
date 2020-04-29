@@ -10,7 +10,7 @@
             <h2 class="ui header"><i aria-hidden="true" class="user icon"></i>Register</h2>
             <p style="color: black;"> Log in to see the data of your hospital and check the updates.</p>
             <div class="ui divider"></div>
-            <form id="myForm" action="/" class="ui form">
+            <form id="myForm" action="/auth/register" method="POST" class="ui form">
                 <div class="field">
                     <div class="field"><label class="ui header">Name</label>
                         <div class="ui left icon input"><input style="padding: 0;" aria-invalid="true" placeholder="Enter Full Name" name="name" type="text" value=""><i aria-hidden="true" class="user icon"></i></div>
@@ -31,11 +31,6 @@
                         <div class="ui left icon input"><input style="padding: 0;" aria-invalid="true" placeholder="Re-enter Password" name="passwordConfirmation" type="password" value=""><i aria-hidden="true" class="lock icon"></i></div>
                     </div>
                 </div>
-                <div id="privField" style="display: none;" class="field">
-                    <div class="field"><label class="ui header">Private Key</label>
-                        <div class="ui left icon input"><input id="privKey" style="padding: 0;" aria-invalid="true" placeholder="Enter Pivate key" name="privKey" type="text" value=""><i aria-hidden="true" class="key icon"></i></div>
-                    </div>
-                </div>
                 <div class="field ui header" style="color: black;"><b>User Role</b></div>
                 <div class="inline fields">
                     <div class="field">
@@ -48,18 +43,27 @@
                         <div class="ui radio checkbox"><input id="admin" name="role" type="radio" value="admin"><label for="Admin">Admin</label></div>
                     </div>
                 </div>
+                <div id="privField" style="display: none;" class="field">
+                    <div class="field"><label class="ui header">Private Key</label>
+                        <div class="ui left icon input"><input id="privKey" style="padding: 0;" aria-invalid="true" placeholder="Enter Pivate key" name="privKey" type="text" value=""><i aria-hidden="true" class="key icon"></i></div>
+                    </div>
+                </div>
+
                 <div class="field">
                     <div class="field">
                         <div class="ui checkbox"><input id="box" type="checkbox"><label for="privKey"><i style="color: red;"class="key icon"></i> PRIVATE KEY</label></div>
                     </div>
                 </div>
-                <div onclick="register()" class="ui primary button">Register</div>
+                    <input id="publicKey" type="hidden" aria-invalid="true"  name="publicKey" type="text" value="">
+                </div>
+               <div onclick="register()" class="ui primary button">Generate Keys</div>
                 <div style="margin: 0 auto;" class="ui basic modal">
                     <div class="ui icon header">
                         <i class="hospital icon"></i> YOUR <span style="color: red;">KEYS</span>
                     </div>
                     <div style="text-align: center;" class="content">
-                        <p>These are your keys please click a picture <i style="color: red;" class="camera icon"></i>and store them securely for future reference.</p>
+                        <p>These are your keys please take a screenshot <i style="color: red;" class="camera icon"></i>and store them securely for future reference.</p>
+                        <b>They will not be showed again!</b>
                         <label style="color: gold;" class="ui header">Private Key</label>
                         <p id="privateKeyDisplay"></p>
                         <label style="color: gold;" class="ui header">Address</label>

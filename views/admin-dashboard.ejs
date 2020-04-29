@@ -1,102 +1,37 @@
 <%- include("partials/header2") %>
 
+
+   <% hospitals.map(hospital=> { %>
     <div class="tab">
         <div style="width:100%; border-radius: 20px;" class="ui card ">
             <div class="content">
-                <a class="header" href="hospital-website">Hospital Name</a>
+                <a class="header" href="<%= hospital.website %>"><%= hospital.name %></a>
                 <div class="meta">
-                    <span class="category">Number</span>
+                    <span class="category"><%= hospital.registrationNumber %></span>
                 </div>
                 <div class="description">
-                    <p>Hospital description</p>
+                    <p><%= hospital.description %></p>
+                </div>
+                <div class="address">
+                    <p><%= hospital.address %></p>
+                </div>
+                <div class="phone">
+                    <p><%= hospital.phone%></p>
+                </div>
+                <div class="email">
+                    <p><%= hospital.email %></p>
                 </div>
             </div>
             <div class="extra content">
-                <div class="left floated author">
-                    <button class="circular ui small blue button mod">Status</button>
-                </div>
-                <div class="right floated author">
-                    Owner
-                </div>
+            <div class="left floated author">
+                <button class="circular ui small blue button mod">Approve Hospital</button>
+            </div>
+            <div class="right floated author">
+               Owner
+            </div>
             </div>
         </div>
-        <div style="width:100%; border-radius: 20px;" class="ui card ">
-            <div class="content">
-                <a class="header" href="hospital-website">Hospital Name</a>
-                <div class="meta">
-                    <span class="category">Number</span>
-                </div>
-                <div class="description">
-                    <p>Hospital description</p>
-                </div>
-            </div>
-            <div class="extra content">
-                <div class="left floated author">
-                    <button class="circular ui small blue button mod">Status</button>
-                </div>
-                <div class="right floated author">
-                    Owner
-                </div>
-            </div>
-        </div>
-        <div style="width:100%;  border-radius: 20px;" class="ui card ">
-            <div class="content">
-                <a class="header" href="hospital-website">Hospital Name</a>
-                <div class="meta">
-                    <span class="category">Number</span>
-                </div>
-                <div class="description">
-                    <p>Hospital description</p>
-                </div>
-            </div>
-            <div style="width:100%;  border-radius: 20px;" class="extra content">
-                <div class="left floated author">
-                    <button class="circular ui small blue button mod">Status</button>
-                </div>
-                <div class="right floated author">
-                    Owner
-                </div>
-            </div>
-        </div>
-        <div style="width:100%;  border-radius: 20px;" class="ui card ">
-            <div class="content">
-                <a class="header" href="hospital-website">Hospital Name</a>
-                <div class="meta">
-                    <span class="category">Number</span>
-                </div>
-                <div class="description">
-                    <p>Hospital description</p>
-                </div>
-            </div>
-            <div class="extra content">
-                <div class="left floated author">
-                    <button class="circular ui small blue button mod">Status</button>
-                </div>
-                <div class="right floated author">
-                    Owner
-                </div>
-            </div>
-        </div>
-        <div style="width:100%;  border-radius: 20px;" class="ui card ">
-            <div class="content">
-                <a class="header" href="hospital-website">Hospital Name</a>
-                <div class="meta">
-                    <span class="category">Number</span>
-                </div>
-                <div class="description">
-                    <p>Hospital description</p>
-                </div>
-            </div>
-            <div class="extra content">
-                <div class="left floated author">
-                    <button class="circular ui small blue button mod">Status</button>
-                </div>
-                <div class="right floated author">
-                    Owner
-                </div>
-            </div>
-        </div>
-    </div>
+    <% }) %>
     <div style="margin: 0 auto;" class="ui basic modal">
         <div class="ui icon header">
             <i class="hospital icon"></i> Generate Verification Status

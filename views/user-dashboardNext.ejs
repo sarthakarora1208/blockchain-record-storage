@@ -14,7 +14,7 @@
     <div class="tab">
         <div style="margin: 0 auto; text-align: center;" class="ui card">
             <div class="content">
-                <div style="color: darkcyan;" class="header"><i style="color: orangered;" class="user icon"></i> User.name</div>
+                <div style="color: darkcyan;" class="header"><i style="color: orangered;" class="user icon"></i> <%= user.name%></div>
             </div>
             <div class="content">
                 <h4 style="color:blue;" class="ui sub header">Email</h4>
@@ -22,17 +22,18 @@
                     <div class="event">
                         <div class="content">
                             <div style="color: salmon; text-align: center;" class="summary">
-                                User.email
+                               <%= user.email%>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h4 style="color: maroon;" class="ui sub header">Address</h4>
+                <h4 style="color: maroon;" class="ui sub header">Public Key</h4>
                 <div class="ui small feed">
                     <div class="event">
                         <div class="content">
                             <div style="color: goldenrod; text-align: center;" class="summary">
-                                User.address
+
+                               <%= user.publicKey%>
                             </div>
                         </div>
                     </div>
@@ -44,9 +45,6 @@
                 <div style="color:yellowgreen" class="right floated content">
                     Request Time
                 </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
                 <div style="color:red" class="left floated content">
                     Hospital Name
                 </div>
@@ -54,49 +52,20 @@
                     Status
                 </div>
             </div>
+
             <div style="padding: 10px;" class="item">
                 <div class="right floated content">
-                    User.requestTime
+                     <%=  pdRequest.createdAt%>
                 </div>
                 <!-- <div class="right floated content">
                     <div class="ui button">Add</div>
                 </div> -->
                 <div style="color:lightblue" class="left floated content">
-                    User.Hospitalname
+                       <%= pdRequest.hospital.name%>
                 </div>
 
                 <div style="text-align: center; color: green;" class="middle floated content">
-                    User.status
-                </div>
-            </div>
-            <div style="padding: 10px;" class="item">
-                <div class="right floated content">
-                    User.requestTime
-                </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
-                <div style="color:lightblue" class="left floated content">
-                    User.Hospitalname
-                </div>
-
-                <div style="text-align: center; color: green;" class="middle floated content">
-                    User.status
-                </div>
-            </div>
-            <div style="padding: 10px;" class="item">
-                <div class="right floated content">
-                    User.requestTime
-                </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
-                <div style="color:lightblue" class="left floated content">
-                    User.Hospitalname
-                </div>
-
-                <div style="text-align: center; color: green;" class="middle floated content">
-                    User.status
+                    <%= pdRequest.isApproved%>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
       <span class="line line1"></span>
         <span class="letters letters-left"><i>Hospital</i></span>
         <!-- <span class="letters ampersand">&#187;</span> -->
-        <span class="letters letters-right">Name</span>
+        <span class="letters letters-right"><%= hospital.name %> </span>
         <span class="line line2"></span>
         </span>
     </h1>
@@ -16,9 +16,6 @@
                 <div style="color:yellowgreen" class="right floated content">
                     Edit or Delete Request
                 </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
                 <div style="color:red" class="left floated content">
                     Patient Name
                 </div>
@@ -26,51 +23,21 @@
                     Status of Request
                 </div>
             </div>
+
+            <% pdRequests.map(pdrequest => { %>
             <div style="padding: 10px;" class="item">
                 <div class="right floated content">
-                    <a href="/add-patient-data"><i class="pencil icon"></a></i> <i style="color: red;" class="delete icon"></i>
+                    <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
                 </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
                 <div style="color:lightblue" class="left floated content">
-                    User.Hospitalname
+                    <%= pdrequest.user.name %>
                 </div>
 
                 <div style="text-align: center; color: green;" class="middle floated content">
-                    User.status
+                    <%= pdrequest.isApproved %>
                 </div>
             </div>
-            <div style="padding: 10px;" class="item">
-                <div class="right floated content">
-                    <a href="/add-patient-data"><i class="pencil icon"></a></i> <i style="color: red;" class="delete icon"></i>
-                </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
-                <div style="color:lightblue" class="left floated content">
-                    User.Hospitalname
-                </div>
-
-                <div style="text-align: center; color: green;" class="middle floated content">
-                    User.status
-                </div>
-            </div>
-            <div style="padding: 10px;" class="item">
-                <div class="right floated content">
-                    <a href="/add-patient-data"><i class="pencil icon"></a></i> <i style="color: red;" class="delete icon"></i>
-                </div>
-                <!-- <div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> -->
-                <div style="color:lightblue" class="left floated content">
-                    User.Hospitalname
-                </div>
-
-                <div style="text-align: center; color: green;" class="content">
-                    User.status
-                </div>
-            </div>
+            <%})%>
         </div>
     </div>
 
