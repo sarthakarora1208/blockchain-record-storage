@@ -70,6 +70,14 @@ app.use(
 // Connect flash
 app.use(flash());
 
+// Global variables
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
@@ -94,7 +102,7 @@ app.get('/', (req, res) => res.redirect('/auth/login'));
 // Mount routers
 app.use('/auth', authFrontend);
 app.use('/users', userFrontend);
-app.use('/hopsitals', hospitalFrontend);
+app.use('/hospitals', hospitalFrontend);
 app.use('/admin', adminFrontend);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/hospitals', hopsitals);

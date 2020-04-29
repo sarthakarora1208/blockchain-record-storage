@@ -1,8 +1,13 @@
 const express = require('express');
-const { dashboard } = require('../../controllers/frontend/adminFrontend');
+const {
+  dashboard,
+  approveHospital,
+} = require('../../controllers/frontend/adminFrontend');
+const { checkIfAuthenticated } = require('../../middleware/authFrontend');
 
 const router = express.Router();
 
-router.route('/dashboard').get(dashboard);
+router.route('/dashboard').get(checkIfAuthenticated, dashboard);
+router.route('/approve').post(approveHospital);
 
 module.exports = router;

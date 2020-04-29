@@ -9,6 +9,10 @@ const HospitalSchema = new mongoose.Schema(
       trim: true,
       maxlength: [50, 'Name can not be more than 50 characters'],
     },
+    publicKey: {
+      type: String,
+      required: [true, 'Please add a public key'],
+    },
     description: {
       type: String,
       required: [true, 'Please add a description'],

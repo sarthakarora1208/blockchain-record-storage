@@ -1,7 +1,7 @@
-const API = requrire('./api');
+const API = require('./api');
 const { HOSPITALS, PDREQUESTS } = require('../constants/routes');
 
-export async function getPatientDataRequests(hospitalId) {
+exports.getPatientDataRequests = async (hospitalId) => {
   try {
     const res = await API.get(`${HOSPITALS}/${hospitalId}${PDREQUESTS}`);
     const { data } = res.data;
@@ -9,9 +9,9 @@ export async function getPatientDataRequests(hospitalId) {
   } catch (err) {
     throw err;
   }
-}
+};
 
-export async function getPatientDataRequestById(id) {
+exports.getPatientDataRequestById = async (id) => {
   try {
     const res = await API.get(`${PDREQUESTS}/${id}`);
     const { data } = res.data;
@@ -19,9 +19,9 @@ export async function getPatientDataRequestById(id) {
   } catch (err) {
     throw err;
   }
-}
+};
 
-export async function addPatientDataRequest(hospitalId, patientData) {
+exports.addPatientDataRequest = async (hospitalId, patientData) => {
   try {
     const res = await API.post(
       `${HOSPITALS}/${hospitalId}/reviews`,
@@ -32,9 +32,9 @@ export async function addPatientDataRequest(hospitalId, patientData) {
   } catch (err) {
     throw err;
   }
-}
+};
 
-export async function getPatientDataRequestForUser() {
+exports.getPatientDataRequestForUser = async () => {
   try {
     const res = await API.get(`${PDREQUESTS}/user`);
     const { data } = res.data;
@@ -42,9 +42,9 @@ export async function getPatientDataRequestForUser() {
   } catch (err) {
     throw err;
   }
-}
+};
 
-export async function approvePatientDataRequest(patientDataRequestId) {
+exports.approvePatientDataRequest = async (patientDataRequestId) => {
   try {
     const res = await API.put(`${PDREQUESTS}/${patientDataRequestId}/approve`);
     const { data } = res.data;
@@ -52,4 +52,4 @@ export async function approvePatientDataRequest(patientDataRequestId) {
   } catch (err) {
     throw err;
   }
-}
+};

@@ -22,15 +22,19 @@ exports.getPatientDataRequests = asyncHandler(async (req, res, next) => {
 //@route           GET /api/v1/pdrequests/:id
 //@access          Public
 exports.getPatientDataRequest = asyncHandler(async (req, res, next) => {
-  const pdRequest = await PatientDataRequest.findById(req.params.id).populate({
-    path: 'hospital',
-    select: 'name description',
-  });
+  const pdRequest = await PatientDataRequest.findById(req.params.id)
+    .populate({
+      path: 'hospital',
+      select: 'name description',
+    })
+    .populate('user');
+
   if (!pdRequest) {
     return next(
       new ErrorResponse(`No Patient Data found for ${req.params.id}`, 404)
     );
   }
+
   res.status(200).json({
     success: true,
     data: pdRequest,
