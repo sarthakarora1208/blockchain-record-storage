@@ -8,9 +8,7 @@ $('.ui.checkbox').checkbox({
 });
 
 
-$('.ui.radio.checkbox')
-  .checkbox()
-;
+$('.ui.radio.checkbox').checkbox();
 
 
 //below library is only used for encryption and decryption and getting pubKey from privKey
@@ -24,27 +22,28 @@ var web3 = new Web3(new Web3.providers.HttpProvider(url));
 var privateKey;
 
 function register(){
-	
+
 	if($("input[type=checkbox]").prop("checked"))
-	{ 
+	{
 		$("input[type=checkbox]").css("color","red");
-		regWithKeys();	
+		regWithKeys();
 	}
 	else
 	  {
-		  console.log("hi");
 		  regNew();
 	  }
 	  $('.ui.basic.modal').modal('show');
 }
 
 function formSubmit(){
+	console.log("called")
 	document.getElementById("myForm").submit();
 }
 
 
 function regWithKeys() {
 	privateKey = document.getElementById("privKey").value;
+	publicKeyElement = document.getElementById('publicKey');
 	var email = document.getElementById("email").value;
 	var pwd = document.getElementById("pwd").value;
 	var acc = web3.eth.accounts.privateKeyToAccount(privateKey);
@@ -59,10 +58,12 @@ function regWithKeys() {
 	//so that we can use them further
 	document.getElementById("privateKeyDisplay").innerHTML = wallet[0].privateKey;
 	publicKey= EthCrypto.publicKeyByPrivateKey(wallet[0].privateKey);
+	publicKeyElement.value = publicKey;
 	document.getElementById("address").innerHTML=EthCrypto.publicKey.toAddress(publicKey);
 }
 
 function regNew() {
+	publicKeyElement = document.getElementById('publicKey');
 	var email = document.getElementById("email").value;
 	var pwd = document.getElementById("pwd").value;
 	var wallet = web3.eth.accounts.wallet; // this makes code small
@@ -78,6 +79,7 @@ function regNew() {
 	//so that we can use them further
 	document.getElementById("privateKeyDisplay").innerHTML = wallet[0].privateKey;
 	publicKey = EthCrypto.publicKeyByPrivateKey(wallet[0].privateKey);
+	publicKeyElement.value = publicKey;
 	document.getElementById("address").innerHTML=EthCrypto.publicKey.toAddress(publicKey);
 
 }

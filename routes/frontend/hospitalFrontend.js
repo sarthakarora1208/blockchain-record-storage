@@ -18,7 +18,7 @@ router
   .post(postAddHospital);
 
 router
-  .route(':id/add-patient-data')
+  .route('/:id/add-patient-data')
   .get(checkIfAuthenticated, getAddPatientData)
   .post(postAddPatientData);
 

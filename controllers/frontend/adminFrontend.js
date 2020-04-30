@@ -10,7 +10,6 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
     const hospitals = [...data.data];
     res.render('admin-dashboard.ejs', {
       user: req.user,
-      //hosptitals: [{ name: 'sarthak' }],
       hospitals,
     });
   } catch (error) {

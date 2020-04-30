@@ -48,6 +48,7 @@ exports.getRequestData = asyncHandler(async (req, res, next) => {
 
 exports.postRequestData = asyncHandler(async (req, res, next) => {
   const { hospitalId, comment } = req.body;
+  console.log("Hospital Id" + hospitalId)
   try {
     let data = await addPatientDataRequest(hospitalId, { comment });
     console.log(data);

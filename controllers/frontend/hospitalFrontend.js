@@ -4,24 +4,25 @@ const {
   getPatientDataRequestById,
   approvePatientDataRequest,
 } = require('../../API/patientDataRequests');
-const { getHospitalForUser } = require('../../API/hospitalRequests');
+const { getHospitalForUser, addHospital } = require('../../API/hospitalRequests');
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
   let pdRequests = [];
   try {
     let data = await getHospitalForUser();
-    const hospital = data[0];
     console.log(data.length);
     // if already has made a request
+
     if (data.length === 1) {
+      const hospital = data[0];
+      console.log("hospital is" +  hospital);
       data = await getPatientDataRequests(hospital.id);
-      console.log(data.length);
-
-      pdRequests = [...data.data];
-
+      console.log(data);
+      pdRequests = [...data];
       res.render('hospital-dashboardNext.ejs', {
         user: req.user,
         pdRequests,
+        hospital
       });
     } else {
       res.render('hospital-dashboard.ejs', { user: req.user });
@@ -41,34 +42,11 @@ exports.getAddHospital = asyncHandler(async (req, res, next) => {
 
 exports.postAddHospital = asyncHandler(async (req, res, next) => {
   try {
-    const {
-      name,
-      email,
-      description,
-      phone,
-      address,
-      website,
-      registrationNumber,
-      publicKey,
-    } = req.body;
-
-    let data = await register({
-      name: 'Bhopal Memorial Hospital​ And Research Centre',
-      description:
-        'BMHRC is a leading Multi-Speciality Hospital in Bhopal, known for its adoption of professional standards, Nationally & Internationally.',
-      registrationNumber: 1111,
-      website: 'https://chrcbhopal.com',
-      phone: ': 0755 274 2212',
-      email: 'mail@chrcbhopal.com',
-      address:
-        'Raisen Rd, near Best Price, BMHRC Campus, Karond, Bhopal, Madhya Pradesh 462038',
-      publicKey: 'publicKey',
-    });
-    const { success } = data;
-    if (success) {
-      req.flash('success_msg', 'Hospital Added Successfully');
-      res.redirect('/hospital/dashboard');
-    }
+    console.log(req.body);
+    let data = await addHospital(req.body);
+    console.log(data)
+    req.flash('success_msg', 'Hospital Added Successfully');
+    res.redirect('/hospitals/dashboard');
   } catch (error) {
     if (error.response) {
       req.flash('error_msg', error.response.data);

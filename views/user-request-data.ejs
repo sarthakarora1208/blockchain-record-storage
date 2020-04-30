@@ -8,10 +8,10 @@
                     <div class="ui text loader">Loading</div>
                 </div>
             </div>
-            <h2 class="ui header"><i style="color: yellow;" aria-hidden="true" class="plus icon"></i>Reguest user data</h2>
-            <p style="color: black;"> Request user data to get information about the user and get it's well pass.</p>
+            <h2 class="ui header"><i style="color: yellow;" aria-hidden="true" class="plus icon"></i>Reguest your data</h2>
+            <p style="color: black;">Hey, <%= user.name%> Get your COVID'19 data</p>
             <div class="ui divider"></div>
-            <form action="/user-request-data" method="POST" class="ui form">
+            <form action="/users/request-data" method="POST" class="ui form" id="request-data-from">
                 <div class="field">
                     <div class="field"><label class="ui header">Comment</label>
                         <textarea placeholder="Enter comments" name="comment"></textarea>
@@ -19,11 +19,12 @@
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Hospital Name</label>
-                        <select name="HospitalName" multiple="" class="ui fluid dropdown">
-                  <option value="">HospitalName</option>
-                  <option name="HospitalName" value="hospitalId">HospitalName</option>
-                  <option name="HospitalName" value="hospitalId">HospitalName</option>
-                  <option name="HospitalName" value="hospitalId">HospitalName</option>
+                        <select class="ui fluid dropdown" name="hospitalId" id="request-data-form">
+                    <% hospitals.map(hospital => { %>
+                        <option value="<%=hospital.id%>">
+                            <%= hospital.name %>
+                        </option>
+                    <%})%>
                   </select>
                     </div>
                     <button type="submit" class="ui red button"><div class="content">Request Data</div></button>

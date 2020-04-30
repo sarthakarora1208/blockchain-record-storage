@@ -24,7 +24,7 @@ exports.getPatientDataRequestById = async (id) => {
 exports.addPatientDataRequest = async (hospitalId, patientData) => {
   try {
     const res = await API.post(
-      `${HOSPITALS}/${hospitalId}/reviews`,
+      `${HOSPITALS}/${hospitalId}/pdrequests`,
       patientData
     );
     const { data } = res.data;
