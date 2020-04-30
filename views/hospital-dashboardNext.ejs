@@ -6,15 +6,17 @@
         <span class="letters letters-left"><i>Hospital</i></span>
         <!-- <span class="letters ampersand">&#187;</span> -->
         <span class="letters letters-right"><%= hospital.name %> </span>
+
         <span class="line line2"></span>
         </span>
     </h1>
-    <div class="tab">
+        <div class="tab">
+        <div
 
         <div style="background: white; border: 1px solid black; border-radius: 15px;" class="ui middle aligned divided list">
             <div style="padding: 10px;" class="item">
                 <div style="color:yellowgreen" class="right floated content">
-                    Edit or Delete Request
+                    Edit Request
                 </div>
                 <div style="color:red" class="left floated content">
                     Patient Name
@@ -23,6 +25,10 @@
                     Status of Request
                 </div>
             </div>
+            <% if(!pdrequest.length) { %>
+                <div> No requests found!</div>
+            <% } %>
+
 
             <% pdRequests.map(pdrequest => { %>
             <div style="padding: 10px;" class="item">

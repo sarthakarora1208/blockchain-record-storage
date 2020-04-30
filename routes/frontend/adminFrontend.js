@@ -8,6 +8,6 @@ const { checkIfAuthenticated } = require('../../middleware/authFrontend');
 const router = express.Router();
 
 router.route('/dashboard').get(checkIfAuthenticated, dashboard);
-router.route('/approve').post(approveHospital);
+router.route('/:id/approve').post(approveHospital);
 
 module.exports = router;

@@ -5,7 +5,7 @@ $(document).ready(function(){
 function modshow(hospitalId)
 {
 	console.log(hospitalId);
-	var modalName=`.ui.basic.modal.${hospitalId}`
+	var modalName=`.ui.basic.modal.${hospitalId}.first`
 	$(modalName).modal('show');
 }
 // $("").on("click",function(){
@@ -126,15 +126,19 @@ function addHospital(publicKey) {
 			.on('receipt', (i) => {
 				console.log(i);
 				$('#dimmer').dimmer('hide');
-				$('.ui.basic.modal.mod2').modal('show');
+				var modal2 =`.ui.basic.modal.${publicKey}.second`
+				$(modal2).modal('show');
+
 			}) // this means transaction sent
 			.on('error', (i) => {
 				console.log(i);
 				$('#dimmer').dimmer('hide');
-				$('.ui.basic.modal.mod3').modal('show');
+				var modal3 =`.ui.basic.modal.${publicKey}.third`
+				$(modal3).modal('show');
+
 			}); // do the redirects now
 	});
-   
+
 	};
 
 

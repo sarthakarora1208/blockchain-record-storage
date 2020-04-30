@@ -94,7 +94,8 @@
             </div>
         </div>
         <div style="text-align: center;" class="actions">
-            <button class="ui pink basic ok inverted  button" onclick="getQR()"><i class="checkmark icon"></i>Generate QR Code</button>
+            <input type="hidden" value="<%= user.email %>"id="email" >
+            <button class="ui pink basic ok inverted  button" onclick="getQR()" ><i class="checkmark icon"></i>Generate QR Code</button>
         </div>
     </div>
     <div style="margin: 0 auto;" class="ui basic modal mod2">

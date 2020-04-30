@@ -165,9 +165,13 @@ function addData(email) {
 
 	var pwd = document.getElementById('pwd').value;
 	var email = document.getElementById('email').value;
+	console.log(email);
+	console.log(pwd);
 
 	web3.eth.accounts.wallet.load(pwd,email); //hardcoded email but fetch email from database
+	console.log(web3.eth.accounts.wallet[0])
 	//Signing and sending the transaction
+
 	web3.eth.accounts.signTransaction(tx, web3.eth.accounts.wallet[0].privateKey).then((signed) => {
 		web3.eth
 			.sendSignedTransaction(signed.rawTransaction)

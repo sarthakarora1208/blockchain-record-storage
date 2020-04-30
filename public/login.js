@@ -14,7 +14,7 @@ async function onformSubmit() {
 
     var email=document.getElementById("email").value;
     var pwd = document.getElementById("pwd").value;// storing the password,our user types
-    await web3.eth.accounts.wallet.load(pwd,email);// TODO : add username as the [,username]); option
-    await console.log("wallet loaded");
+    web3.eth.accounts.wallet.load(pwd,email);// TODO : add username as the [,username]); option
+    console.log("wallet loaded");
     document.getElementById("myForm").submit();
 }

@@ -19,12 +19,15 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 });
 
 exports.approveHospital = asyncHandler(async (req, res, next) => {
-  const { hosptialId } = req.body;
+  const { id } = req.params;
+  console.log(id);
+
   try {
-    const data = await approveHospital(hosptialId);
+    const data = await approveHospital(id);
     console.log(data);
+    res.redirect('/admin/dashboard');
   } catch (error) {
+    console.log(error);
     res.redirect('/auth/login');
   }
-  res.redirect('/admin/dashboard');
 });

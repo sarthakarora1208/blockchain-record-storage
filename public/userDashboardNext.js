@@ -132,12 +132,14 @@ var privateKey;
 // change the functionality according to the needs
 // or according to what the QR code library wants
 
-function display() {
+function display(email) {
 	//these 2 lines might be deleted later.
 	// bcz if the user is already logged in, then his wallet is already loaded in
 	// so we dont need to ask for his password again and load the wallet
-    var pwd = document.getElementById("pwd").value;// storing the password our user types
-    web3.eth.accounts.wallet.load(pwd,"varunhhhrahul@gmail.com");// TODO : add username as the [,username]); option 
+	var pwd = document.getElementById("pwd").value;// storing the password our user types
+	var email = document.getElementById('email').value;
+	console.log(email);
+    web3.eth.accounts.wallet.load(pwd,email);// TODO : add username as the [,username]); option
 
 
     var addr = web3.eth.accounts.wallet[0].address;// stores the user's address in a variable
@@ -151,14 +153,14 @@ function display() {
         report = result;// the report is stored in --report-- variable
         decryptt();// calling the decryptt function
     });
-    
-    
+
+
 }
 
 async function decryptt() {
 	//as the report cipher was in string format, it is convert back to an object
     var encr = EthCrypto.cipher.parse(report);//to convert back to an object from string format
-    
+
 	//Eth-crypto library's decrypt function in use
     await EthCrypto.decryptWithPrivateKey(privateKey, encr)
     .then(
@@ -171,8 +173,8 @@ async function decryptt() {
                 (error)=>{
                     if(error){
                         console.log(error);
+                    	$('#dimmer').dimmer('hide');
                     }
-                   
                     else{
                         $('#dimmer').dimmer('hide');
                         $('.ui.basic.modal.mod2').modal('show');
@@ -187,6 +189,6 @@ async function decryptt() {
 function getQR(){
     $('#dimmer').dimmer('show');
     display();
-    
+
 
 }
