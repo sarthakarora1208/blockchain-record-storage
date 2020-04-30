@@ -1,34 +1,36 @@
 <%- include("partials/header2") %>
-
-    <!-- FORM -->
-    <div class="form1" style="margin-top: 20px;">
-        <div class="ui raised segment dimmable">
-            <div class="ui inverted dimmer">
-                <div class="content">
-                    <div class="ui text loader">Loading</div>
+    <%- include("partials/messages") %>
+        <!-- FORM -->
+        <div class="form1" style="margin-top: 20px;">
+            <div class="ui raised segment dimmable">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="ui text loader">Loading</div>
+                    </div>
                 </div>
+                <h2 class="ui header"><i aria-hidden="true" class="user icon"></i>Login</h2>
+                <p style="color: black;"> Log in to see the data of your hospital and heck the updates.</p>
+                <div class="ui divider"></div>
+                <form id="myForm" action="/auth/login" method="POST" class="ui form">
+                    <div class="field">
+                        <div class="field"><label class="ui header">Email Address</label>
+                            <div class="ui left icon input"><input id="email" aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="email" type="text" value="<%= typeof email != 'undefined' ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Password</label>
+                            <div class="ui action left icon input"><input id="pwd" aria-invalid="true" style="padding: 0;" placeholder="Enter Password" name="password" type="password" value="<%= typeof password != 'undefined' ? password : '' %>"><i aria-hidden="true" class="lock icon"></i>
+                                <button class="ui icon button"><i aria-hidden="true" class="eye icon"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div onclick="onformSubmit()" class="ui primary button">Login</div>
+                </form>
+                <div class="ui divider"></div>
+                <p> <a href="#">Forgot Password? </a></p>
+                <p style="color: black;">Don't have an account? <a href="/auth/register"><button class="ui green button"> Sign up</button></a></p>
             </div>
-            <h2 class="ui header"><i aria-hidden="true" class="user icon"></i>Login</h2>
-            <p style="color: black;"> Log in to see the data of your hospital and heck the updates.</p>
-            <div class="ui divider"></div>
-            <form id="myForm" action="/auth/login" method="POST" class="ui form">
-                <div class="field">
-                    <div class="field"><label class="ui header">Email Address</label>
-                        <div class="ui left icon input"><input id="email" aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="email" type="text" value="<%= typeof email != 'undefined' ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="field"><label class="ui header">Password</label>
-                        <div class="ui action left icon input"><input id="pwd" aria-invalid="true" style="padding: 0;" placeholder="Enter Password" name="password" type="password" value="<%= typeof password != 'undefined' ? password : '' %>"><i aria-hidden="true" class="lock icon"></i><button class="ui icon button"><i aria-hidden="true" class="eye icon"></i></button></div>
-                    </div>
-                </div>
-                <div onclick="onformSubmit()" class="ui primary button">Login</div>
-            </form>
-            <div class="ui divider"></div>
-            <p> <a href="#">Forgot Password? </a></p>
-            <p style="color: black;">Don't have an account? <a href="/auth/register"><button class="ui green button"> Sign up</button></a></p>
         </div>
-    </div>
-    </header>
+        </header>
 
-    <%- include("partials/loginfooter") %>
+        <%- include("partials/loginfooter") %>

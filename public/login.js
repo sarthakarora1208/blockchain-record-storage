@@ -2,6 +2,10 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
 });
 
+$(".ui.message.close.icon").on("click",()=>{
+    $('.ui.message').fadeOut("slow")
+});
+
 
 //below library is only used for encryption and decryption
 var EthCrypto = require('eth-crypto');
