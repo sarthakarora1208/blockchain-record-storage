@@ -124,6 +124,7 @@ function upload() {
 		symptoms: symptoms,
 		Email: patientEmail,
 		comments: comments
+		addr: addr
 	};
 	//using stringify so that we can encrypt it and store as a string
 	report = JSON.stringify(report);

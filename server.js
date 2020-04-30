@@ -15,7 +15,7 @@ const connectDB = require('./config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
 
-    
+
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -104,6 +104,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => res.render('index'));
+app.get('/verify',(req,res) => res.render('verifyRecordAcceptance'))
 // Mount routers
 app.use('/auth', authFrontend);
 app.use('/users', userFrontend);

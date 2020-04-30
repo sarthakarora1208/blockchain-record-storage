@@ -25,16 +25,18 @@
                     Status of Request
                 </div>
             </div>
-            <% if(!pdrequest.length) { %>
-                <div> No requests found!</div>
-            <% } %>
+
 
 
             <% pdRequests.map(pdrequest => { %>
             <div style="padding: 10px;" class="item">
-                <div class="right floated content">
+                 <div class="right floated content">
+                <% if(!pdrequest.isApproved) { %>
                     <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
-                </div>
+                <% } else { %>
+                    closed
+                <% } %>
+                 </div>
                 <div style="color:lightblue" class="left floated content">
                     <%= pdrequest.user.name %>
                 </div>

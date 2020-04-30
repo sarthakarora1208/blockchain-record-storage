@@ -34,7 +34,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 });
 
 exports.getAddHospital = asyncHandler(async (req, res, next) => {
-  res.render('add-hospital', { user: req.user });
+  res.render('add-hospital', { user: req.user, name: "", description: "", registrationNumber: "", website: "", phone: "", email: "", address: "", publicKey: ''});
 });
 
 exports.postAddHospital = asyncHandler(async (req, res, next) => {

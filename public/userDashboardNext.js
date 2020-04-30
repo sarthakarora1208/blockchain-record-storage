@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('.sidenav').sidenav();
 });
-
+var addr
 
 anime.timeline({loop: false})
   .add({
@@ -132,17 +132,18 @@ var privateKey;
 // change the functionality according to the needs
 // or according to what the QR code library wants
 
-function display(email) {
+function display() {
 	//these 2 lines might be deleted later.
 	// bcz if the user is already logged in, then his wallet is already loaded in
 	// so we dont need to ask for his password again and load the wallet
 	var pwd = document.getElementById("pwd").value;// storing the password our user types
-	var email = document.getElementById('email').value;
-	console.log(email);
+	var email = document.getElementById('email').value
+
+
     web3.eth.accounts.wallet.load(pwd,email);// TODO : add username as the [,username]); option
+	addr = web3.eth.accounts.wallet[0].address;// stores the user's address in a variable
+	console.log(addr)
 
-
-    var addr = web3.eth.accounts.wallet[0].address;// stores the user's address in a variable
 	privateKey = web3.eth.accounts.wallet[0].privateKey;
 	// calling the smart contract's getReport() function
 	// it returns the user's report in encrypted format
@@ -173,8 +174,8 @@ async function decryptt() {
                 (error)=>{
                     if(error){
                         console.log(error);
-                    	$('#dimmer').dimmer('hide');
                     }
+
                     else{
                         $('#dimmer').dimmer('hide');
                         $('.ui.basic.modal.mod2').modal('show');

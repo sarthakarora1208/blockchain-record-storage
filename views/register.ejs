@@ -13,14 +13,14 @@
             <form id="myForm" action="/auth/register" method="POST" class="ui form">
                 <div class="field">
                     <div class="field"><label class="ui header">Name</label>
-                        <div class="ui left icon input"><input style="padding: 0;" aria-invalid="true" placeholder="Enter Full Name" name="name" type="text" value="<%= typeof name != 'undefined' ? name : '' %>"
+                        <div class="ui left icon input"><input style="padding: 0;" aria-invalid="true" placeholder="Enter Full Name" name="name" type="text" value="<%= typeof name !== 'undefined' ? name : '' %>"
 
                             ><i aria-hidden="true" class="user icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Email Address</label>
-                        <div class="ui left icon input"><input id="email" style="padding: 0;" aria-invalid="true" placeholder="Enter Email" name="email" type="email" value="<%= typeof email != undefined ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
+                        <div class="ui left icon input"><input id="email" style="padding: 0;" aria-invalid="true" placeholder="Enter Email" name="email" type="email" value="<%= typeof email !== "undefined" ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
