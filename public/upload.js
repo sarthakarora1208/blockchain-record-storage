@@ -161,9 +161,12 @@ async function encryptt() {
 	});
 }
 
-function addData() {
+function addData(email) {
+
 	var pwd = document.getElementById('pwd').value;
-	web3.eth.accounts.wallet.load(pwd, 'varunhhhrahul@gmail.com'); //hardcoded email but fetch email from database
+	var email = document.getElementById('email').value;
+
+	web3.eth.accounts.wallet.load(pwd,email); //hardcoded email but fetch email from database
 	//Signing and sending the transaction
 	web3.eth.accounts.signTransaction(tx, web3.eth.accounts.wallet[0].privateKey).then((signed) => {
 		web3.eth

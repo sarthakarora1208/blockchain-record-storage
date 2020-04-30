@@ -57,7 +57,8 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
   try {
     const data = await getPatientDataRequestById(id);
     const { user, comment, hospital } = data;
-    res.render('add-patient-data.ejs', {id, user, comment, hospital });
+    console.log('')
+    res.render('add-patient-data.ejs', {id, user, comment, hospital, owner: req.user });
   } catch (error) {
     if (error.response) {
       req.flash('error_msg', error.response.data);
