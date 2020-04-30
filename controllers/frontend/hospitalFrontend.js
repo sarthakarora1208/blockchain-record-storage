@@ -10,14 +10,11 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   let pdRequests = [];
   try {
     let data = await getHospitalForUser();
-    console.log(data.length);
     // if already has made a request
 
     if (data.length === 1) {
       const hospital = data[0];
-      console.log("hospital is" +  hospital);
       data = await getPatientDataRequests(hospital.id);
-      console.log(data);
       pdRequests = [...data];
       res.render('hospital-dashboardNext.ejs', {
         user: req.user,
@@ -42,7 +39,6 @@ exports.getAddHospital = asyncHandler(async (req, res, next) => {
 
 exports.postAddHospital = asyncHandler(async (req, res, next) => {
   try {
-    console.log(req.body);
     let data = await addHospital(req.body);
     console.log(data)
     req.flash('success_msg', 'Hospital Added Successfully');
@@ -58,12 +54,10 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
 
 exports.getAddPatientData = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-
   try {
     const data = await getPatientDataRequestById(id);
-    const { user, comment, hospital } = data.data;
-    const { publicKey, name } = user;
-    res.render('add-patient-data.ejs', { name, publicKey, comment, hospital });
+    const { user, comment, hospital } = data;
+    res.render('add-patient-data.ejs', {id, user, comment, hospital });
   } catch (error) {
     if (error.response) {
       req.flash('error_msg', error.response.data);
@@ -71,6 +65,8 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
     }
   }
 });
+
+
 
 exports.postAddPatientData = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
