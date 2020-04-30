@@ -42,30 +42,30 @@ exports.getRegister = asyncHandler(async (req, res, next) => {
 });
 
 exports.postRegister = asyncHandler(async (req, res, next) => {
-  const { name, email, password, role, publicKey } = req.body;
+  // const { name, email, password, role, publicKey } = req.body;
   try {
-    let errors = [];
+  //   let errors = [];
 
-    if (!name || !email || !password || !passwordConfirmation || !role  ) {
-      errors.push({ msg: 'Please enter all fields' });
-    }
+  //   if (!name || !email || !password || !passwordConfirmation || !role  ) {
+  //     errors.push({ msg: 'Please enter all fields' });
+  //   }
 
-    if (password != passwordConfirmation) {
-      errors.push({ msg: 'Passwords do not match' });
-    }
+  //   if (password != passwordConfirmation) {
+  //     errors.push({ msg: 'Passwords do not match' });
+  //   }
 
-    if (password.length < 6) {
-      errors.push({ msg: 'Password must be at least 6 characters' });
-    }
-    if (errors.length > 0) {
-      res.render('register.ejs', {
-        errors,
-        name,
-        email,
-        password,
-        passwordConfirmation
-      });
-    } else {
+  //   if (password.length < 6) {
+  //     errors.push({ msg: 'Password must be at least 6 characters' });
+  //   }
+  //   if (errors.length > 0) {
+  //     res.render('register.ejs', {
+  //       errors,
+  //       name,
+  //       email,
+  //       password,
+  //       passwordConfirmation
+  //     });
+  //   } else {
       let user = await register(req.body);
       console.log(user)
       const { success, data} = user;
@@ -73,7 +73,7 @@ exports.postRegister = asyncHandler(async (req, res, next) => {
         req.flash('success_msg', 'You are now registered and can log in');
         res.redirect('/auth/login');
       }
-    }
+    // }
   } catch (error) {
     if (error.response) {
       req.flash('error_msg', error.response.data);
