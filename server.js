@@ -105,7 +105,7 @@ app.use(function (req, res, next) {
 
 app.get('/', (req, res) => res.render('index'));
 app.get('/verify',(req,res) => res.render('verify-address'))
-app.get('/qrscanner',(req,res) => res.render('qr-scanner'))
+app.get('/qrscanner',(req,res) => res.render('qrscanner'))
 // Mount routers
 app.use('/auth', authFrontend);
 app.use('/users', userFrontend);
