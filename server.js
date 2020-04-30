@@ -103,7 +103,7 @@ app.use(cors());
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => res.redirect('/auth/login'));
+app.get('/', (req, res) => res.render('index'));
 // Mount routers
 app.use('/auth', authFrontend);
 app.use('/users', userFrontend);
