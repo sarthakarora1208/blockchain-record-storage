@@ -22,3 +22,12 @@ async function onformSubmit() {
     console.log("wallet loaded");
     document.getElementById("myForm").submit();
 }
+    document.getElementById('eye').addEventListener("click",function(event){
+        event.preventDefault();
+        const passwordElement = document.getElementById('pwd');
+        if (passwordElement.type === "password") {
+            passwordElement.type = "text";
+          } else {
+            passwordElement.type = "password";
+          }
+    })

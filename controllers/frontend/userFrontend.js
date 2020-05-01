@@ -22,7 +22,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   } catch (error) {
     console.log(error);
     if (error.response) {
-      req.flash('error_msg', error.response.data);
+      req.flash('error_msg', error.response.data.error);
       res.redirect('/auth/login');
     }
   }
@@ -40,7 +40,7 @@ exports.getRequestData = asyncHandler(async (req, res, next) => {
   } catch (error) {
     console.log(error);
     if (error.response) {
-      req.flash('error_msg', error.response.data);
+      req.flash('error_msg', error.response.data.error);
       res.redirect('/users/dashboard');
     }
   }
@@ -57,7 +57,7 @@ exports.postRequestData = asyncHandler(async (req, res, next) => {
     console.log(error);
     console.log(error);
     if (error.response) {
-      req.flash('error_msg', error.response.data);
+      req.flash('error_msg', error.response.data.error);
       res.redirect('/users/request-data');
     }
   }

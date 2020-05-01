@@ -27,28 +27,40 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
   } catch (error) {
     console.log(error);
     if (error.response) {
-      req.flash('error_msg', error.response.data);
-      res.redirect('/auth/login');
+      req.flash('error_msg', error.response.data.error);
     }
+      res.redirect('/auth/login');
   }
 });
 
 exports.getAddHospital = asyncHandler(async (req, res, next) => {
-  res.render('add-hospital', { user: req.user, name: "", description: "", registrationNumber: "", website: "", phone: "", email: "", address: "", publicKey: ''});
+  res.render('add-hospital');
 });
 
 exports.postAddHospital = asyncHandler(async (req, res, next) => {
  const {name, description, registrationNumber, website, phone, email, address, publicKey} = req.body
+  let errors = [];
   try {
-    let data = await addHospital(req.body);
-    console.log(data)
-    req.flash('success_msg', 'Hospital Added Successfully');
-    res.redirect('/hospitals/dashboard');
+    if(!name || !description || !registrationNumber || !website || !phone || !email || !address){
+       errors.push({ msg: 'Please enter all fields' });
+    }
+
+    if(errors.length > 0){
+      res.render('add-hospital.ejs', {errors, name, description, registrationNumber, website, phone, email, address, publicKey} );
+     } else {
+      let data = await addHospital(req.body);
+      req.flash('success_msg', 'Hospital Added Successfully');
+      res.redirect('/hospitals/dashboard');
+     }
   } catch (error) {
     if (error.response) {
-      req.flash('error_msg', error.response.data);
-      res.render('add-hospital.ejs', {name, description, registrationNumber, website, phone, email, address, publicKey} );
+      if(error.response.data.error === "Duplicate field value entered"){
+        errors.push({msg: "Hospital Name already registered"})
+      } else {
+        errors.push({msg: error.response.data.error })
+      }
     }
+      res.render('add-hospital.ejs', {errors, name, description, registrationNumber, website, phone, email, address, publicKey} );
   }
 });
 
@@ -61,26 +73,23 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
     res.render('add-patient-data.ejs', {id, user, comment, hospital, owner: req.user });
   } catch (error) {
     if (error.response) {
-      req.flash('error_msg', error.response.data);
-      res.redirect('/hospitals/dashboard');
+      req.flash('error_msg', error.response.data.error);
     }
+    res.redirect('/hospitals/dashboard');
   }
 });
-
-
 
 exports.postAddPatientData = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   console.log(id)
   try {
     const data = await approvePatientDataRequest(id);
-    console.log(data)
     req.flash('success_msg', 'Request approved for patient');
     res.redirect('/hospitals/dashboard');
   } catch (error) {
     if (error.response) {
-      req.flash('error_msg', error.response.data);
-      res.redirect('/hospitals/dashboard');
+      req.flash('error_msg', error.response.data.error);
     }
+    res.redirect('/hospitals/dashboard');
   }
 });

@@ -33,7 +33,9 @@ exports.logout = async () => {
   try {
     const res = await API.get(`${AUTH}/logout`);
     return res.data;
-  } catch (err) {}
+  } catch (err) {
+    throw err;
+  }
 };
 
 exports.updateDetails = async (userData) => {

@@ -3,6 +3,7 @@
     <div class="form1" style="margin-top: 0px;">
         <div class="ui raised segment dimmable">
             <div class="ui inverted dimmer">
+                <%- include("partials/messages") %>
                 <div class="content">
                     <div class="ui text loader">Loading</div>
                 </div>
@@ -18,7 +19,7 @@
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Email Address</label>
-                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's associated Email" name="email" type="email" value="<%= typeof email != undefined ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's associated Email" name="email" type="email" value="<%= typeof email != 'undefined' ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
                     </div>
                 </div>
                 <div class="field">

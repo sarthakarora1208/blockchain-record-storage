@@ -1,16 +1,16 @@
 <%- include("partials/header2") %>
-    <%- include("partials/messages") %>
 
         <!-- FORM -->
         <div class="form1" style="margin-top: 20px;">
             <div class="ui raised segment dimmable">
+                <%- include("partials/messages") %>
                 <div class="ui inverted dimmer">
                     <div class="content">
                         <div class="ui text loader">Loading</div>
                     </div>
                 </div>
                 <h2 class="ui header"><i aria-hidden="true" class="user icon"></i>Login</h2>
-                <p style="color: black;"> Log in to see the data of your hospital and heck the updates.</p>
+                <p style="color: black;"> Log in to make a request for your data and check the updates.</p>
                 <div class="ui divider"></div>
                 <form id="myForm" action="/auth/login" method="POST" class="ui form">
                     <div class="field">
@@ -21,15 +21,15 @@
                     <div class="field">
                         <div class="field"><label class="ui header">Password</label>
                             <div class="ui action left icon input"><input id="pwd" aria-invalid="true" style="padding: 0;" placeholder="Enter Password" name="password" type="password" value="<%= typeof password !== 'undefined' ? password : '' %>"><i aria-hidden="true" class="lock icon"></i>
-                                <button
-                                    class="ui icon button"><i aria-hidden="true" class="eye icon"></i></button>
+                                <button class="ui icon button" id="eye"><i aria-hidden="true" class="eye icon"></i></button>
                             </div>
                         </div>
+                    </div>
                         <div onclick="onformSubmit()" class="ui primary button">Login</div>
                 </form>
                 <div class="ui divider"></div>
                 <p> <a href="#">Forgot Password? </a></p>
-                <p style="color: black;">Don't have an account? <a href="/auth/register"><button class="ui green button"> Sign up</button></a></p>
+                <p style="color: black;">Don't have an account? <a href="/auth/register">Sign up</a></p>
                 </div>
             </div>
             </header>
