@@ -6,7 +6,7 @@ body {
     overflow: hidden;
     color: white;
     height: 100vh;
-    background-image: url("https://media.npr.org/assets/img/2020/02/11/coronavirustreatment1_wide-e5c5c03066a91715b4f0726b6236ed46076a1701.jpg?s=1400");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://media.npr.org/assets/img/2020/02/11/coronavirustreatment1_wide-e5c5c03066a91715b4f0726b6236ed46076a1701.jpg?s=1400");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
