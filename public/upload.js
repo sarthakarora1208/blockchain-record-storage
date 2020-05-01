@@ -134,7 +134,7 @@ async function upload() {
                 email: patientEmail,
                 comments: comments,
                 address: addr,
-                ifpsURL: ipfsURL
+                ipfsURL: ipfsURL
         };
 	    encryptt(await report);
     };
