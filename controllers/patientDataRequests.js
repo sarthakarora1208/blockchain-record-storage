@@ -3,6 +3,9 @@ const ErrorResponse = require('../utils/errorResponse');
 const PatientDataRequest = require('../models/PatientDataRequest');
 const Hospital = require('../models/Hospital');
 
+const { google } = require('googleapis');
+const keys = require('../config/keys.json');
+
 //@description    Get Patient Data Request
 //@route          GET /api/v1/hospitals/:hospitalId/pdrequests
 //@access`        PUBLIC?
@@ -80,11 +83,35 @@ exports.getPatientDataRequestForUser = asyncHandler(async (req, res, next) => {
 //@route   PUT /api/v1/pdrequests/:id/approve
 //@access  Private
 exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
-  let pdrequest = await PatientDataRequest.findById(req.params.id);
+  let pdrequest = await PatientDataRequest.findById(req.params.id).populate('hospital').populate('user');
 
   if (!pdrequest) {
     return next(new ErrorResponse(`Patient data request not found`));
   }
+
+  const client = new google.auth.JWT(
+    keys.client_email,
+    undefined,
+    keys.private_key,
+    ['https://www.googleapis.com/auth/spreadsheets']
+  );
+
+  const sheets = google.sheets({ version: 'v4', auth: client });
+
+  const {_id, hospital,user,createdAt} = pdrequest[0];
+  const requestParams = {
+    spreadsheetId: '1xVVAaP5tRf30eCoVX5UJa5SbRglaeGG3kmxhCvvv5Dc',
+    range: 'Data',
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS',
+    resource: {
+      values: [[_id, user.name,user.email,createdAt, hospital.registrationNumber,hospital.name,hospital.phone]],
+    },
+  };
+  const responseData = await sheets.spreadsheets.values.append(
+    requestParams
+  );
+  console.log(responseData.status);
 
   pdrequest = await PatientDataRequest.findByIdAndUpdate(
     req.params.id,
