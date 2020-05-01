@@ -48,7 +48,7 @@
                         <textarea name="description" placeholder="Enter Hopsital Description..."></textarea>
                     </div>
                 </div>
-                <input id="publicKey" type="hidden" aria-invalid="true"  name="publicKey" type="text" value="<%= typeof user.publicKey !== "undefined" ? user.public %>">
+                <input id="publicKey" type="hidden" aria-invalid="true"  name="publicKey" type="text" value="<%= user.publicKey %>">
                 <button type="submit" class="ui red button"><div class="content">Add Hospital</div></button></form>
         </div>
     </div>
