@@ -1,6 +1,11 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script>
+    $('.message .close').on('click', function() {
+            $(this).closest('.message').transition('fade');
+    });
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js "></script>
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
@@ -8,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui-calendar/0.0.8/calendar.js"></script>
 <script src="/bundle.js"></script>
 <script src="/hospitalRegister.js"></script>
+
 </body>
 
 </html>

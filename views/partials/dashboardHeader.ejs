@@ -33,14 +33,10 @@
                         </a>
 
                         <ul class="right hide-on-med-and-down ">
-                            <li><a href="#">Logged in as 
+                            <li><a href="#">Logged in as
                             <% if(user.name){ %>
                                 <%= user.name %>
-                            <% }else if(hospital.name){ %>
-                                 <%= hospital.name %>
-                            <% } else if(admin.name){ %>
-                                <%= admin.name %>
-                            <% } %>
+                            <% }%>
                             </a></li>
                             <li><a href="/auth/logout">Logout</a></li>
                         </ul>
@@ -53,14 +49,10 @@
             <div id="particles-js2"></div>
             <li>
                 <a style="color:white;" href="#">
-                    Logged in as 
+                    Logged in as
                     <% if(user.name){ %>
                         <%= user.name %>
-                            <% }else if(hospital.name){ %>
-                                <%= hospital.name %>
-                                    <% } else if(admin.name){ %>
-                                        <%= admin.name %>
-                                            <% } %>
+                   <% }%>
                 </a>
             </li>
             <li><a style="color:white;" href="/auth/logout">Logout</a></li>

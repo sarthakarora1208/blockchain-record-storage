@@ -13,7 +13,9 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
       hospitals,
     });
   } catch (error) {
-    console.log(error);
+    if (error.response) {
+      req.flash('error_msg', error.response.data.error);
+    }
     res.redirect('/auth/login');
   }
 });
@@ -27,7 +29,10 @@ exports.approveHospital = asyncHandler(async (req, res, next) => {
     console.log(data);
     res.redirect('/admin/dashboard');
   } catch (error) {
-    console.log(error);
-    res.redirect('/auth/login');
+    if (error.response) {
+      req.flash('error_msg', error.response.data.error);
+    }
+
+    res.redirect('/admin/dashboard');
   }
 });

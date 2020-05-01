@@ -356,3 +356,12 @@ particlesJS("particles-js3", {
     },
     "retina_detect": true
 });
+    document.getElementById('eye').addEventListener("click",function(event){
+        event.preventDefault();
+        const passwordElement = document.getElementById('pwd');
+        if (passwordElement.type === "password") {
+            passwordElement.type = "text";
+          } else {
+            passwordElement.type = "password";
+          }
+    })
