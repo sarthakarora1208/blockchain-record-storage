@@ -41,11 +41,11 @@
                     <div style="font-size: 1.2em;">Status:
                         <% if (pdRequest.isApproved) { %>
                             <span style="color:green">
-                            <%= pdRequest.isApproved%><i style="color: green;"class="checkmark icon"></i>
+                            <i style="color: green;"class="checkmark icon"></i>
                         </span>
                             <% } else { %>
                                 <span style="color:red">
-                                <%= pdRequest.isApproved%><i style="color: red;"class="remove icon"></i>
+                                <i style="color: red;"class="remove icon"></i>
                             </span>
                                 <% } %>
                     </div>
@@ -70,11 +70,6 @@
                         </a>
                     </p>
 
-                    <!-- <p>
-                    <a href="#">
-                        <button style="background-color:#379683; color: white;" onclick="modshow(this.id)" class="circular ui medium button ">Approve Hospital</button>
-                    </a>
-                </p> -->
                     <% } %>
             </div>
             <div class="card-reveal">
@@ -87,60 +82,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div style="margin: 0 auto; text-align: center;" class="ui card">
-            <div class="content">
-                <div style="color: darkcyan;" class="header"><i style="color: orangered;" class="user icon"></i>
-                    <%= user.name%>
-                </div>
-            </div>
-            <div class="content">
-                <h4 style="color:blue;" class="ui sub header">Email</h4>
-                <div class="ui small feed">
-                    <div class="event">
-                        <div class="content">
-                            <div style="color: salmon; text-align: center;" class="summary">
-                                <%= user.email%>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="background: white; border: 1px solid black; border-radius: 15px;" class="ui middle aligned divided list">
-            <div style="padding: 10px;" class="item">
-                <div style="color:yellowgreen" class="right floated content">
-                    Request Time
-                </div>
-                <div style="color:red" class="left floated content">
-                    Hospital Name
-                </div>
-                <div style="text-align: center;color:green" class="middle floated content">
-                    Status
-                </div>
-            </div>
 
-            <div style="padding: 10px;" class="item">
-                <div class="right floated content">
-                    <%=  pdRequest.createdAt%>
-                </div>
-                <<div class="right floated content">
-                    <div class="ui button">Add</div>
-                </div> 
-        <div style="color:lightblue" class="left floated content">
-            <%= pdRequest.hospital.name%>
-        </div>
-
-        <div style="text-align: center; color: green;" class="middle floated content">
-            <%= pdRequest.isApproved%>
-        </div>
-    </div>
-    </div>
-
-    <% if (pdRequest.isApproved) { %>
-        <div id="qr" onclick="$('.ui.basic.modal.mod1').modal('show');" class="ui right circular floated huge blue labeled icon button">
-            <i class="code icon"></i> Generate Qr Code
-        </div>
-        <% } %> -->
 
     </div>
 

@@ -19,7 +19,7 @@
             <form id="myForm" action="" method="POST" class="ui form">
                 <div class="field">
                     <div class="field"><label class="ui header">Patient Name</label>
-                        <div class="ui left icon input"><input id="patientName" aria-invalid="true" style="padding: 0;" type="sidplaceholder=" Enter Patient Name " name="patientName " type="text " value="<%=user.name %>" readonly><i aria-hidden="true" class="user icon"></i></div>
+                        <div class="ui left icon input"><input id="patientName" aria-invalid="true" style="padding: 1;" type="sidplaceholder=" Enter Patient Name " name="patientName " type="text " value="<%=user.name %>" readonly><i aria-hidden="true" class="user icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
@@ -28,32 +28,29 @@
                     </div>
                 </div>
                 <div class="field">
-                    <div class="field"><label class="ui header">Patient's Request</label>
+                    <div class="field"><label class="ui header">Patient's Comments</label>
                         <div class="ui left icon input"><input id="patientRequest" aria-invalid="true" style="padding: 0;" type="text" value="<%= comment %>" readonly><i aria-hidden="true" class="key icon"></i></div>
                     </div>
                 </div>
 
 
-                <div class="field">
+                <div class="field" >
                     <div class="field"><label class="ui header">Patient's Public key</label>
                         <div class="ui left icon input"><input id="patientPublicKey" aria-invalid="true" style="padding: 0;" placeholder="Enter Public Key" name="patientPublicKey" type="text" value="<%= user.publicKey %>" readonly><i aria-hidden="true" class="key icon"></i></div>
                     </div>
                 </div>
+
+
                 <div class="field">
-                    <div class="field"><label class="ui header">Comments</label>
-                        <textarea id="comments" placeholder="Enter Comments" name="comments"></textarea>
+                    <div class="field"><label class="ui header">Hospital Name </label>
+                        <div class="ui left icon input"><input id="hospitalName" aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital Admission ID" name="hospitalName" type="text" value="<%= hospital.name %>"><i aria-hidden="true" class="hospital icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Upload File</label>
                         <div class="ui left icon input">
-                            <input id="imgFile" aria-invalid="true" style="padding: 0;" name="" accept="image/*" type="file" value=""><i aria-hidden="true" class="hospital icon"></i>
+                            <input id="imgFile" aria-invalid="true" style="padding: 1;" name="" accept="image/*" type="file" value=""><i aria-hidden="true" class="file icon"></i>
                         </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="field"><label class="ui header">Hospital Name </label>
-                        <div class="ui left icon input"><input id="hospitalName" aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital Admission ID" name="hospitalName" type="text" value="<%= hospital.name %>"><i aria-hidden="true" class="hospital icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
@@ -76,7 +73,11 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="field">
+                    <div class="field"><label class="ui header">Comments</label>
+                        <textarea id="comments" placeholder="Enter Comments" name="comments"></textarea>
+                    </div>
+                </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Symptoms</label>
                         <textarea id="symptoms" placeholder="Enter Symptoms" name="symptoms"></textarea>

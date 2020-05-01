@@ -23,11 +23,11 @@
                         <td>
                             <% if(pdrequest.isApproved){%>
                                 <span style="color:  #379683;">
-                                    <%= pdrequest.isApproved %>
+                                    <i style="color: green;"class="checkmark icon"></i>
                                 </span>
                                 <% } else{ %>
                                     <span style="color: red;">
-                                        <%= pdrequest.isApproved %>
+                                        <i style="color: red;"class="remove icon"></i>
                                     </span>
                                     <% } %>
                         </td>
@@ -35,7 +35,7 @@
                             <% if(!pdrequest.isApproved) { %>
                                 <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
                                 <% } else { %>
-                                    <span style="color: brown;">closed</span>
+                                    <span style="color: #379683;">Request Approved!</span>
                                     <% } %>
                         </td>
                     </tr>
