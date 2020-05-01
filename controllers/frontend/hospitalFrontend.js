@@ -34,7 +34,7 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 });
 
 exports.getAddHospital = asyncHandler(async (req, res, next) => {
-  res.render('add-hospital');
+  res.render('add-hospital',{user: req.user});
 });
 
 exports.postAddHospital = asyncHandler(async (req, res, next) => {
@@ -46,7 +46,8 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
     }
 
     if(errors.length > 0){
-      res.render('add-hospital.ejs', {errors, name, description, registrationNumber, website, phone, email, address, publicKey} );
+      req.flash('error_msg',errors[0])
+      res.redirect('/hospitals/add-hospital')
      } else {
       let data = await addHospital(req.body);
       req.flash('success_msg', 'Hospital Added Successfully');
@@ -60,7 +61,8 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
         errors.push({msg: error.response.data.error })
       }
     }
-      res.render('add-hospital.ejs', {errors, name, description, registrationNumber, website, phone, email, address, publicKey} );
+      req.flash('error_msg',errors[0])
+      res.redirect('/hospitals/add-hospital')
   }
 });
 

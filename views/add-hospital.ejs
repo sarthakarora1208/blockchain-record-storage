@@ -24,22 +24,22 @@
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Registration Number</label>
-                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Registration Number" name="registrationNumber" type="number" value="<%= typeof registrationNumber != undefined ? registrationNumber : '' %>"><i aria-hidden="true" class="plus icon"></i></div>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Registration Number" name="registrationNumber" type="number" value="<%= typeof registrationNumber != "undefined" ? registrationNumber : '' %>"><i aria-hidden="true" class="plus icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Website Name</label>
-                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's associated website" name="website" type="text" value="<%= typeof website != undefined ? website : '' %>"><i aria-hidden="true" class="circle icon"></i></div>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's associated website" name="website" type="text" value="<%= typeof website != "undefined" ? website : '' %>"><i aria-hidden="true" class="circle icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Phone Number</label>
-                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Phone Number" name="phone" type="text" value="<%= typeof phone != undefined ? phone : '' %>"><i aria-hidden="true" class="phone icon"></i></div>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Phone Number" name="phone" type="text" value="<%= typeof phone != "undefined" ? phone : '' %>"><i aria-hidden="true" class="phone icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Address</label>
-                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Address of the Hospital" name="address" type="text" value="<%= typeof address != undefined ? address: '' %>"><i aria-hidden="true" class="hospital icon"></i></div>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Address of the Hospital" name="address" type="text" value="<%= typeof address != "undefined" ? address: '' %>"><i aria-hidden="true" class="hospital icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
@@ -47,7 +47,7 @@
                         <textarea name="description" placeholder="Enter Hopsital Description..."></textarea>
                     </div>
                 </div>
-                <input id="publicKey" type="hidden" aria-invalid="true"  name="publicKey" type="text" value="<%= user.publicKey %>">
+                <input id="publicKey" type="hidden" aria-invalid="true"  name="publicKey" type="text" value="<%= typeof user.publicKey !== "undefined" ? user.public %>">
                 <button type="submit" class="ui red button"><div class="content">Add Hospital</div></button></form>
         </div>
     </div>
