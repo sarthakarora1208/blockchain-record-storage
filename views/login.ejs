@@ -1,16 +1,16 @@
 <%- include("partials/header2") %>
     <div id="particles-js"></div>
 
-        <!-- FORM -->
-        <div class="form1" style="margin-top: 20px;">
-            <div class="ui raised segment dimmable">
-                <%- include("partials/messages") %>
+    <!-- FORM -->
+    <div class="form1" style="margin-top: 20px;">
+        <div class="ui raised segment dimmable">
+            <%- include("partials/messages") %>
                 <div class="ui inverted dimmer">
                     <div class="content">
                         <div class="ui text loader">Loading</div>
                     </div>
                 </div>
-                <h2 class="ui header"><i aria-hidden="true" class="user icon"></i>Login</h2>
+                <h2 style="letter-spacing: 0.1em;" class="ui header"><i aria-hidden="true" style="color: #379683;" class="user icon"></i>Login</h2>
                 <p style="color: black;"> Log in to make a request for your data and check the updates.</p>
                 <div class="ui divider"></div>
                 <form id="myForm" action="/auth/login" method="POST" class="ui form">
@@ -30,14 +30,14 @@
                             </div>
                         </div>
                     </div>
-                        <div onclick="onformSubmit()" class="ui primary button">Login</div>
+                    <div style="background-color:#379683; color: white;" onclick="onformSubmit()" class=" circular ui button">Login</div>
                 </form>
                 <div class="ui divider"></div>
-                <p> <a href="#">Forgot Password? </a></p>
-                <p style="color: black;">Don't have an account? <a href="/auth/register">Sign up</a></p>
-                </div>
-            </div>
-            </header>
+                <p> <a style="color:#379683;" href="#">Forgot Password? </a></p>
+                <p style="color: black;">Don't have an account? <a style="color:#379683;" href="/auth/register">Sign up</a></p>
+        </div>
+    </div>
+    </header>
 
 
-            <%- include("partials/loginfooter") %>
+    <%- include("partials/loginfooter") %>

@@ -1,4 +1,5 @@
 body {
+    background-color: #05386B;
     /* background-image: url("https://media.npr.org/assets/img/2020/02/11/coronavirustreatment1_wide-e5c5c03066a91715b4f0726b6236ed46076a1701.jpg?s=1400"); */
     background-position: center;
     background-size: cover;
@@ -45,24 +46,6 @@ body {
 
 li a:hover {
     color: #8EE4AF;
-}
-
-#particles-js,
-#particles-js2,
-#particles-js3 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #05386B;
-    /* background-image: url("https://media.npr.org/assets/img/2020/02/11/coronavirustreatment1_wide-e5c5c03066a91715b4f0726b6236ed46076a1701.jpg?s=1400"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    z-index: 0;
-}
-
-#particles-js2 {
-    background-color: rgba(5, 56, 107, 0.5);
 }
 
 .sidenav {

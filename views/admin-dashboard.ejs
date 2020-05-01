@@ -1,26 +1,28 @@
 <%- include("partials/dashboardHeader") %>
 
-    <div id="particles-js"></div>
+    <!-- <div id="particles-js"></div> -->
     <div class="ui dimmer" id="dimmer">
         <div class="ui massive text loader">
             <h5>Waiting for your Transaction to be mined....</h5>
         </div>
     </div>
+    <div style="text-align:center; margin-top: 20px;">
+        <a style="background-color:#379683; color: white;" href="https://docs.google.com/spreadsheets/d/1xVVAaP5tRf30eCoVX5UJa5SbRglaeGG3kmxhCvvv5Dc/edit?usp=sharing" class="ui medium circular button">All Approved Hospitals</a>
+    </div>
+
+    <h3 style="font-size: 2.5em; text-align: center;" class="ml15">
+        <span style="color: red; letter-spacing: normal;" class="word">Unapproved</span>
+        <span style="color: white; letter-spacing: normal;" class="word">Hospitals</span>
+    </h3>
 
     <% hospitals.map(hospital=> { %>
         <div class="tab">
-            <div style="width:100%; border-radius: 20px;" class="ui card ">
-                <div class="content">
-                    <a class="header" href="<%= hospital.website %>">
-                        <%= hospital.name %>
-                    </a>
+            <div style="margin:0 auto; max-width: 350px; border-radius: 20px;" class="card sticky-action">
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">
+                        <a class="header" style="color: black;" href="<%= hospital.website %>"> <%= hospital.name %></a><i class="material-icons right">more_vert</i></span>
                     <div class="meta">
                         <span class="category"><%= hospital.registrationNumber %></span>
-                    </div>
-                    <div class="description">
-                        <p>
-                            <%= hospital.description %>
-                        </p>
                     </div>
                     <div class="address">
                         <p>
@@ -38,12 +40,18 @@
                         </p>
                     </div>
                 </div>
-                <div class="extra content">
-                    <div class="left floated author">
-                        <button onclick="modshow(this.id)" id="<%=hospital.publicKey%>" class="circular ui small blue button ">Approve Hospital</button>
-                    </div>
-                    <div class="right floated author">
-                        Owner
+                <div style="border-radius: 20px;" class="card-action">
+                    <p><a href="#">
+                        <button style="background-color:#379683; color: white;" onclick="modshow(this.id)" id="<%=hospital.publicKey%>" class="circular ui medium button ">Approve Hospital</button>
+                    </a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"> <%= hospital.name %><i class="material-icons right">close</i></span>
+                    <br>
+                    <div class="description">
+                        <p>
+                            <%= hospital.description %>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -86,7 +94,8 @@
             </div>
 
             <% }) %>
+        </div>
 
-                </header>
+        </header>
 
-                <%- include("partials/adminFooter") %>
+        <%- include("partials/adminFooter") %>
