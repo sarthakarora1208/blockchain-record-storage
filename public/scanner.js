@@ -162,8 +162,8 @@ function tick() {
       email.innerHTML=y.email;
       admissionDate.innerHTML=y.admissionDate;
       releaseDate.innerHTML=y.releaseDate;
-      ipfsURL.innerHTML = y.ipfsURL;
-      ipfsURL.href = y.ipfsURL;
+      ipfsURL.innerHTML = y.ifpsURL;
+      ipfsURL.href = y.ifpsURL;
       display(y.address);
         $('.ui.basic.modal.mod1').modal('show');
         x++;
