@@ -1,52 +1,53 @@
 <%- include("partials/dashboardHeader") %>
 
-    <h1 class="ml5">
-        <span class="text-wrapper">
-      <span class="line line1"></span>
-        <span class="letters letters-left"><i>Hospital</i></span>
-        <!-- <span class="letters ampersand">&#187;</span> -->
-        <span class="letters letters-right"><%= hospital.name %> </span>
-
-        <span class="line line2"></span>
-        </span>
-    </h1>
+    <h3 style="margin-top: 50px;font-size: 2.5em; text-align: center;" class="ml15">
+        <span style="color:#5CDB95; letter-spacing: normal;" class="word"><%= hospital.name %> </span>
+        <span style="color:white; letter-spacing: normal;" class="word">Hospital</span>
+    </h3>
     <div class="tab">
-        <div <div style="background: white; border: 1px solid black; border-radius: 15px;" class="ui middle aligned divided list">
-            <div style="padding: 10px;" class="item">
-                <div style="color:yellowgreen" class="right floated content">
-                    Edit Request
-                </div>
-                <div style="color:red" class="left floated content">
-                    Patient Name
-                </div>
-                <div style="text-align: center; color:green" class="middle floated content">
-                    Status of Request
-                </div>
-            </div>
+        <table style="background-color: white; margin: 0 auto; border: 1px solid black; border-radius: 15px;" class="striped centered responsive-table">
+            <thead>
+                <tr>
+                    <th style="color: orangered;">Patient Name</th>
+                    <th style="color: #379683;">Status of Request</th>
+                    <th style="color: brown;"> Edit Request</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% pdRequests.map(pdrequest => { %>
+                    <tr>
+                        <td>
+                            <%= pdrequest.user.name %>
+                        </td>
+                        <td>
+                            <% if(pdrequest.isApproved){%>
+                                <span style="color:  #379683;">
+                                    <%= pdrequest.isApproved %>
+                                </span>
+                                <% } else{ %>
+                                    <span style="color: red;">
+                                        <%= pdrequest.isApproved %>
+                                    </span>
+                                    <% } %>
+                        </td>
+                        <td>
+                            <% if(!pdrequest.isApproved) { %>
+                                <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
+                                <% } else { %>
+                                    <span style="color: brown;">closed</span>
+                                    <% } %>
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
 
 
 
-            <% pdRequests.map(pdrequest => { %>
-                <div style="padding: 10px;" class="item">
-                    <div class="right floated content">
-                        <% if(!pdrequest.isApproved) { %>
-                            <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
-                            <% } else { %>
-                                closed
-                                <% } %>
-                    </div>
-                    <div style="color:lightblue" class="left floated content">
-                        <%= pdrequest.user.name %>
-                    </div>
-
-                    <div style="text-align: center; color: green;" class="middle floated content">
-                        <%= pdrequest.isApproved %>
-                    </div>
-                </div>
-                <%})%>
-        </div>
+    </div>
     </div>
 
     </header>
 
-    <%- include("partials/footer2") %>
+    <%- include("partials/userNextFooter") %>

@@ -1,4 +1,4 @@
-<%- include("partials/header2") %>
+<%- include("partials/dashboardHeader") %>
 
     <!-- FORM -->
     <div class="form1" style="margin-top: 0px;">
@@ -8,7 +8,7 @@
                     <div class="ui text loader">Loading</div>
                 </div>
             </div>
-            <h2 class="ui header"><i aria-hidden="true" style="color: red;" class="plus icon"></i>Edit Hospital Name</h2>
+            <h2 class="ui header"><i aria-hidden="true" style="color:#379683 " class="plus icon"></i>Edit Hospital Name</h2>
             <p style="color: black;"> Edit Hospital details to get the information about a particular patient and to generate its well pass. </p>
             <div class="ui divider"></div>
             <form action="/edit-hospital" method="POST" class="ui form">
@@ -42,10 +42,10 @@
                         <textarea name="description" placeholder="Enter Hopsital Description..."></textarea>
                     </div>
                 </div>
-                <button type="submit" class="ui red button"><div class="content">Edit Hospital</div></button></form>
+                <button style="background-color: #379683; color: white;" type="submit" class=" circular ui button"><div class="content">Edit Hospital</div></button></form>
         </div>
     </div>
 
     </header>
 
-    <%- include("partials/footer") %>
+    <%- include("partials/footer2") %>

@@ -1,0 +1,317 @@
+.sidenav {
+    background: rgba(1, 3, 29, 0.7);
+    box-shadow: 0px 15px 10px -15px #111;
+}
+
+nav {
+    background: rgba(1, 3, 29, 0.39);
+    box-shadow: 0px 15px 10px -15px #111;
+}
+
+body {
+    background: url(https://media.npr.org/assets/img/2020/02/11/coronavirustreatment1_custom-f71974829b25cfcf1539d5d77e2dffa17a2c78fd-s1500-c85.jpg);
+    background-size: 100% 100%, cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    text-shadow: 2px 2px red;
+}
+
+.aboutus {
+    font-size: 100px;
+    height: 170px;
+}
+
+.separator-type,
+.title-type,
+.intro-type,
+.content-type .intro-type p {
+    position: relative;
+}
+
+.intro-type .container {
+    padding: 107px 0px 102px 0px !important;
+}
+
+#product-header-section,
+.intro-type .container {
+    padding: 68px 15px 72px !important;
+}
+
+.parallax {
+    background-attachment: inherit !important;
+}
+
+.parallax {
+    background-attachment: inherit !important;
+    background-repeat: repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: -10;
+}
+
+.company-heading h1 {
+    margin-bottom: 40px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700 !important;
+    text-align: center;
+}
+
+.seo-header,
+.product-header,
+.intro-type .container h1.white,
+.company-heading h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100 !important;
+    text-transform: capitalize;
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+.company-sections h2,
+.careers-sections h2,
+.perks-section h2 {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+.company-sections h2,
+.company-sections h3,
+.careers-sections h2,
+.perks-section h2 {
+    font-family: 'proxima-nova', sans-serif;
+}
+
+.company-sections h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 14px 0;
+    font-family: 'proxima-nova', sans-serif;
+    text-transform: capitalize;
+}
+
+.red-border {
+    width: 50%;
+    border-bottom: 1px solid #d2282e;
+    margin: 0 auto;
+    height: 16px;
+}
+
+.company-sections p {
+    margin-top: 20px;
+}
+
+.ct-u-size22 {
+    font-size: 22px;
+}
+
+.ct-u-fontWeight300 {
+    font-weight: 300;
+}
+
+.marginTop40 {
+    margin-top: 40px !important;
+}
+
+.ct-u-paddingBoth100 {
+    padding: 100px 15px;
+}
+
+.company-sections,
+.careers-sections,
+.left-headquarter-section-img,
+.right-headquarter-section-img {
+    text-align: center;
+}
+
+.ct-u-paddingBoth100 {
+    padding: 100px 15px;
+}
+
+.company-sections h2,
+.careers-sections h2,
+.perks-section h2 {
+    font-weight: 900;
+    font-size: 70px;
+}
+
+.company-sections h2,
+.company-sections h3,
+.careers-sections h2,
+.perks-section h2 {
+    font-family: 'proxima-nova', sans-serif;
+    text-shadow: 2px 2px red;
+}
+
+.slick-slider {
+    margin-bottom: 0;
+}
+
+.slick-slider {
+    position: relative;
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+.slider .item {
+    overflow: hidden;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+.shadow {
+    text-shadow: 1px 1px 0 black, 2px 2px 0 black;
+}
+
+.textBlack {
+    color: black;
+    font-size: 1.5em;
+}
+
+.newPage {
+    /* background:url("https://www.thomsonreuters.com/content/dam/ewp-m/images/thomsonreuters/en/artworked-images/adobestock_322667262_2880x1100.jpg.transform/hero-m/q90/image.jpg"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img {
+    width: 400px;
+    height: 400px;
+    background: url(https://sitechecker.pro/wp-content/uploads/2017/12/contact-us.png);
+    background-size: 100% 100%, cover;
+    background-repeat: no-repeat;
+    margin: auto auto auto 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Float four columns side by side */
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+
+/* Remove extra left and right margins, due to padding */
+
+.row {
+    margin: 0 -5px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive columns */
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Style the counter cards */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.myCard1 {
+    height: 350px;
+    background: url(https://sitechecker.pro/wp-content/uploads/2017/12/contact-us.png);
+    background-size: 100% 100%, cover;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+}
+
+.myCard2 {
+    height: 400px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.material-icons:hover {
+    color: #8EE4AF;
+}
+
+li a:hover {
+    color: #8EE4AF;
+}
+
+a {
+    text-decoration: none;
+}
+
+.head {
+    font-size: 25px;
+}
+
+.row {
+    margin-top: 50px;
+}
+
+#team {
+    font-size: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.ui {
+    height: 100px;
+}
+
+i {
+    width: 100px;
+    height: 100px;
+}
