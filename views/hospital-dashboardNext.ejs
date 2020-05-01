@@ -1,4 +1,4 @@
-<%- include("partials/header2") %>
+<%- include("partials/dashboardHeader") %>
 
     <h1 class="ml5">
         <span class="text-wrapper">
@@ -10,10 +10,8 @@
         <span class="line line2"></span>
         </span>
     </h1>
-        <div class="tab">
-        <div
-
-        <div style="background: white; border: 1px solid black; border-radius: 15px;" class="ui middle aligned divided list">
+    <div class="tab">
+        <div <div style="background: white; border: 1px solid black; border-radius: 15px;" class="ui middle aligned divided list">
             <div style="padding: 10px;" class="item">
                 <div style="color:yellowgreen" class="right floated content">
                     Edit Request
@@ -29,23 +27,23 @@
 
 
             <% pdRequests.map(pdrequest => { %>
-            <div style="padding: 10px;" class="item">
-                 <div class="right floated content">
-                <% if(!pdrequest.isApproved) { %>
-                    <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
-                <% } else { %>
-                    closed
-                <% } %>
-                 </div>
-                <div style="color:lightblue" class="left floated content">
-                    <%= pdrequest.user.name %>
-                </div>
+                <div style="padding: 10px;" class="item">
+                    <div class="right floated content">
+                        <% if(!pdrequest.isApproved) { %>
+                            <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
+                            <% } else { %>
+                                closed
+                                <% } %>
+                    </div>
+                    <div style="color:lightblue" class="left floated content">
+                        <%= pdrequest.user.name %>
+                    </div>
 
-                <div style="text-align: center; color: green;" class="middle floated content">
-                    <%= pdrequest.isApproved %>
+                    <div style="text-align: center; color: green;" class="middle floated content">
+                        <%= pdrequest.isApproved %>
+                    </div>
                 </div>
-            </div>
-            <%})%>
+                <%})%>
         </div>
     </div>
 

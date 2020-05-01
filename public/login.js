@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
 });
 
-$(".ui.message.close.icon").on("click",()=>{
+$(".ui.message .close.icon").on("click",()=>{
     $('.ui.message').fadeOut("slow")
 });
 

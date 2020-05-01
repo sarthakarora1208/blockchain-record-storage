@@ -1,11 +1,11 @@
-<%- include("partials/header2") %>
+<%- include("partials/dashboardHeader") %>
 
     <h1 class="ml5">
         <span class="text-wrapper">
       <span class="line line1"></span>
         <span class="letters letters-left"><i>Hello</i></span>
         <span class="letters ampersand">&#187;</span>
-        <span class="letters letters-right">User</span>
+        <span class="letters letters-right"><%= user.name %></span>
         <span class="line line2"></span>
         </span>
     </h1>
@@ -67,11 +67,11 @@
             </div>
         </div>
 
-       <% if (pdRequest.isApproved) { %>
-        <div id="qr" onclick="$('.ui.basic.modal.mod1').modal('show');" class="ui right circular floated huge blue labeled icon button">
-            <i class="code icon"></i> Generate Qr Code
-        </div>
-        <% } %>
+        <% if (pdRequest.isApproved) { %>
+            <div id="qr" onclick="$('.ui.basic.modal.mod1').modal('show');" class="ui right circular floated huge blue labeled icon button">
+                <i class="code icon"></i> Generate Qr Code
+            </div>
+            <% } %>
 
     </div>
     </div>
@@ -87,9 +87,9 @@
             </div>
         </div>
         <div style="text-align: center;" class="actions">
-            <input type="hidden" value="<%= user.email %>"id="email" >
+            <input type="hidden" value="<%= user.email %>" id="email">
 
-            <button class="ui pink basic ok inverted  button" onclick="getQR()" ><i class="checkmark icon"></i>Generate QR Code</button>
+            <button class="ui pink basic ok inverted  button" onclick="getQR()"><i class="checkmark icon"></i>Generate QR Code</button>
         </div>
     </div>
     <div style="margin: 0 auto;" class="ui basic modal mod2">
