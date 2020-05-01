@@ -158,6 +158,7 @@ function tick() {
       y = JSON.parse(code.data);
       console.log(y);
       address.innerHTML= y.address;
+      hospitalName.innerHTML=y.hospitalName;
       fn.innerHTML= y.name;
       email.innerHTML=y.email;
       admissionDate.innerHTML=y.admissionDate;
