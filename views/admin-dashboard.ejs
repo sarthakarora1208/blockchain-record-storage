@@ -13,10 +13,9 @@
         <span style="color: red; letter-spacing: normal;" class="word">Unapproved</span>
         <span style="color: white; letter-spacing: normal;" class="word">Hospitals</span>
     </h3>
-
-    <% hospitals.map(hospital=> { %>
-        <div class="tab">
-            <div style="margin:0 auto; max-width: 350px; border-radius: 20px;" class="card sticky-action">
+    <div class="tab">
+        <% hospitals.map(hospital=> { %>
+            <div style="margin:0 auto; max-width: 350px;  border-radius: 20px;" class="card sticky-action">
                 <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4">
                         <a class="header" style="color: black;" href="<%= hospital.website %>"> <%= hospital.name %></a><i class="material-icons right">more_vert</i></span>
@@ -91,9 +90,8 @@
                     <button class="ui red basic ok inverted button"><i class="remove icon"></i>Close</button>
                 </div>
             </div>
-
-            <% }) %>
-        </div>
+    </div>
+    <% }) %>
 
         </header>
 

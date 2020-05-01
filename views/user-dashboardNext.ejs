@@ -1,5 +1,6 @@
 <%- include("partials/dashboardHeader") %>
 
+
     <h3 style="font-size: 2.5em; text-align: center;" class="ml15">
         <span style="color:white; letter-spacing: normal;" class="word">Hello</span>
         <span style="color:#5CDB95; letter-spacing: normal;" class="word"><%= user.name %></span>
@@ -7,7 +8,8 @@
     <!-- <h1 style="text-align: center; color:darkorange">Scroll Down to see patient Data.</h1> -->
 
     <div class="tab">
-        <div class="ui dimmer" id="dimmer">
+
+        <div style="height: 100%;" class="ui dimmer" id="dimmer">
             <div class="ui massive text loader">
                 <h5>Waiting for your QR code to be generated...</h5>
             </div>
@@ -39,11 +41,11 @@
                     <div style="font-size: 1.2em;">Status:
                         <% if (pdRequest.isApproved) { %>
                             <span style="color:green">
-                            <%= pdRequest.isApproved%>
+                            <%= pdRequest.isApproved%><i style="color: green;"class="checkmark icon"></i>
                         </span>
                             <% } else { %>
                                 <span style="color:red">
-                                <%= pdRequest.isApproved%>
+                                <%= pdRequest.isApproved%><i style="color: red;"class="remove icon"></i>
                             </span>
                                 <% } %>
                     </div>
@@ -79,8 +81,8 @@
                 <span class="card-title grey-text text-darken-4"> <%= user.name %><i class="material-icons right">close</i></span>
                 <br>
                 <div class="description">
-                    <p>
-                        hello
+                    <p style="color: red;">
+                        <%= user.publicKey %>
                     </p>
                 </div>
             </div>
@@ -141,7 +143,7 @@
         <% } %> -->
 
     </div>
-    </div>
+
     <div style="margin: 0 auto;" class="ui basic modal mod1">
         <div class="ui icon header">
             <i class="lock icon"></i><span style="font-size: 1.5em;">Enter Password</span>
@@ -173,5 +175,8 @@
     </div>
     </div>
     </header>
+
+
+
 
     <%- include("partials/userNextFooter") %>
