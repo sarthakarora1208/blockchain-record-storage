@@ -14,6 +14,15 @@ $('.calc').calendar({
   type: 'date'
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.carousel');
+
+  var instances = M.Carousel.init(elems, {
+
+  });
+
+});
+
 var textWrapper = document.querySelector('.ml2');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 

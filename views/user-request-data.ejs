@@ -1,4 +1,5 @@
 <%- include("partials/dashboardHeader") %>
+    <div id="particles-js"></div>
     <!-- FORM -->
     <div class="form1">
         <div class="ui raised segment dimmable">
@@ -11,7 +12,7 @@
             <p style="color: black;">Hey,
                 <%= user.name%> Get your COVID'19 data</p>
             <div class="ui divider"></div>
-            <form action="/users/request-data" method="POST" class="ui form" id="request-data-from">
+            <form style="min-width: 400px;" action="/users/request-data" method="POST" class="ui form" id="request-data-from">
                 <div class="field">
                     <div class="field"><label class="ui header">Comment</label>
                         <textarea placeholder="Enter comments" name="comment"></textarea>
@@ -27,11 +28,13 @@
                     <%})%>
                   </select>
                     </div>
-                    <button type="submit" class="ui red button"><div class="content">Request Data</div></button>
+                </div>
+                <div class="ui divider"></div>
+                <button style="margin: 0 auto; width: 100%;" type="submit" class="ui red button"><div class="content">Request Data</div></button>
             </form>
-            </div>
         </div>
+    </div>
 
-        </header>
+    </header>
 
-        <%- include("partials/footer") %>
+    <%- include("partials/footer2") %>

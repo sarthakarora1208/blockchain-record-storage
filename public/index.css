@@ -1,3 +1,4 @@
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -10,6 +11,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.material-icons:hover {
+    color: #8EE4AF;
+}
+
+li a:hover {
+    color: #8EE4AF;
 }
 
 .sidenav {
@@ -208,4 +217,25 @@ h3.ml8 {
         align-items: center;
         margin: 210px auto;
     }
+}
+
+.carousel {
+    /* margin: 0; */
+    height: 500px;
+}
+
+.carousel-item {
+    height: 200px;
+}
+
+.features .carousel .carousel-item {
+    width: 400px !important;
+    height: 400px !important;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 8px;
+    position: relative !important;
+    /* right: 20px !important; */
 }

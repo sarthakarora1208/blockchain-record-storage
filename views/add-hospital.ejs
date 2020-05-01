@@ -1,4 +1,5 @@
 <%- include("partials/header2") %>
+    <div id="particles-js"></div>
     <!-- FORM -->
     <div class="form1" style="margin-top: 0px;">
         <div class="ui raised segment dimmable">
@@ -23,7 +24,8 @@
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Registration Number</label>
-                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Registration Number" name="registrationNumber" type="number" value="<%= typeof registrationNumber != undefined ? registrationNumber : '' %>"><i aria-hidden="true" class="plus icon"></i></div>
+                        <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Registration Number" name="registrationNumber" type="number" value="<%= typeof registrationNumber != undefined ? registrationNumber : '' %>"><i aria-hidden="true"
+                                class="plus icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
@@ -46,7 +48,7 @@
                         <textarea name="description" placeholder="Enter Hopsital Description..."></textarea>
                     </div>
                 </div>
-                <input id="publicKey" type="hidden" aria-invalid="true"  name="publicKey" type="text" value="<%= user.publicKey %>">
+                <input id="publicKey" type="hidden" aria-invalid="true" name="publicKey" type="text" value="<%= user.publicKey %>">
                 <button type="submit" class="ui red button"><div class="content">Add Hospital</div></button></form>
         </div>
     </div>
