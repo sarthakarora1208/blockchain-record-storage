@@ -15,7 +15,8 @@ const connectDB = require('./config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
 
-
+const { google } = require('googleapis');
+const keys = require('./config/keys.json');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -125,6 +126,15 @@ const server = app.listen(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
   )
 );
+
+const client = new google.auth.JWT(
+  keys.client_email,
+  undefined,
+  keys.private_key,
+  ['https://www.googleapis.com/auth/spreadsheets']
+);
+
+exports.sheets = google.sheets({ version: 'v4', auth: client });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
