@@ -5,6 +5,7 @@ const {
   addPatientDataRequest,
   getPatientDataRequestForUser,
   approvePatientDataRequest,
+  addDataToSheet
 } = require('../controllers/patientDataRequests');
 
 const router = express.Router({ mergeParams: true });
@@ -26,4 +27,7 @@ router
   .route('/:id/approve')
   .put(protect, authorize('owner'), approvePatientDataRequest);
 
+router
+  .route('/:id/addtosheets')
+  .put(protect, authorize('owner'), addDataToSheet);
 module.exports = router;

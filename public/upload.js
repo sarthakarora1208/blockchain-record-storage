@@ -5,6 +5,13 @@ $(document).ready(function() {
 $('.calc').calendar({
 	type: 'date'
 });
+const ipfs = window.IpfsHttpClient({
+    host: "ipfs.infura.io",
+    port: 5001,
+    protocol: "https",
+});
+
+//const Buffer = buffer.Buffer;
 
 //below library is only used for encryption and decryption
 var EthCrypto = require('eth-crypto');
@@ -96,46 +103,58 @@ var tx;
 
 // This function runs onClick of the button Submit in the upload.ejs file
 // change this functionality as you want
-function upload() {
-	$('.ui.basic.modal.mod1').modal('show');
+async function upload() {
+    $('.ui.basic.modal.mod1').modal('show');
+    var ipfsURL;
 	// storing all the form data in variables
+    patientPublicKey = document.getElementById('patientPublicKey').value; // we dont need to ask the user for this
+    addr = EthCrypto.publicKey.toAddress(patientPublicKey);
+
 	var name = document.getElementById('patientName').value,
-		hospitalAdmissionId = document.getElementById('hospitalAdmissionId').value,
+		hospitalName = document.getElementById('hospitalName').value,
 		admissionDate = document.getElementById('admissionDate').value,
 		releaseDate = document.getElementById('releaseDate').value,
 		symptoms = document.getElementById('symptoms').value,
 		patientEmail = document.getElementById('patientEmail').value,
-		comments = document.getElementById('comments').value;
+        comments = document.getElementById('comments').value,
+        img = document.getElementById("imgFile").files[0];
+    const reader = new FileReader();
+    reader.onload = async function () {
+        const file = { path: "test", content: buffer.Buffer(reader.result) };
+        for await (const result of ipfs.add(file)) {
+            console.log(result.cid.string);
+            ipfsURL = `https://gateway.ipfs.io/ipfs/${result.cid.string}`
+        }
+        report = await {
+                name: name,
+                hospitalName: hospitalName,
+                admissionDate: admissionDate,
+                releaseDate: releaseDate,
+                symptoms: symptoms,
+                email: patientEmail,
+                comments: comments,
+                address: addr,
+                ifpsURL: ipfsURL
+        };
+	    encryptt(await report);
+    };
+    reader.readAsArrayBuffer(img);
 
-	patientPublicKey = document.getElementById('patientPublicKey').value; // we dont need to ask the user for this
-	// we retrieve it from out DB
-	var pubkey =
-		'316a622eaa33047dbe0ef37a8ca4dc84a7cda5dd9bdc14426052e860c8c305b673340af8688113dad5313c07b7f32bf6e225f269db3790009a74498121107214';
 
-	//generating the user text from its pubKey
-	addr = EthCrypto.publicKey.toAddress(patientPublicKey);
+
 
 	// the report as an object
-	report = {
-		name: name,
-		hospitalAdmissionId: hospitalAdmissionId,
-		admissionDate: admissionDate,
-		releaseDate: releaseDate,
-		symptoms: symptoms,
-		Email: patientEmail,
-		comments: comments,
-		address: addr
-	};
+
 	//using stringify so that we can encrypt it and store as a string
-	report = JSON.stringify(report);
 
 	//calling the asynchronous function in this way. change if know a better way to do this.
 	// but this works
-	encryptt();
 }
 
-async function encryptt() {
-	await EthCrypto.encryptWithPublicKey(
+async function encryptt(report) {
+    console.log(report)
+    report = JSON.stringify(report);
+	EthCrypto.encryptWithPublicKey(
 		patientPublicKey, // publicKey
 		report // message
 	).then(function(result) {
@@ -190,3 +209,8 @@ function addData(email) {
 	$('#dimmer').dimmer('show');
 }
 
+console.log(ipfs);
+async function addFile(){
+
+
+}

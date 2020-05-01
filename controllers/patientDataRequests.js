@@ -83,11 +83,24 @@ exports.getPatientDataRequestForUser = asyncHandler(async (req, res, next) => {
 //@route   PUT /api/v1/pdrequests/:id/approve
 //@access  Private
 exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
-  let pdrequest = await PatientDataRequest.findById(req.params.id).populate('hospital').populate('user');
-
+  let pdrequest = await PatientDataRequest.findById(req.params.id);
   if (!pdrequest) {
     return next(new ErrorResponse(`Patient data request not found`));
   }
+  pdrequest = await PatientDataRequest.findByIdAndUpdate(
+    req.params.id,
+    {
+      isApproved: true,
+    },
+    { new: true }
+  );
+  res.status(200).json({ success: true, data: pdrequest });
+});
+
+
+exports.addDataToSheet = asyncHandler(async (req, res, next) => {
+
+  let pdrequest = await PatientDataRequest.findById(req.params.id).populate('hospital').populate('user');
 
   const client = new google.auth.JWT(
     keys.client_email,
@@ -95,10 +108,10 @@ exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
     keys.private_key,
     ['https://www.googleapis.com/auth/spreadsheets']
   );
-
   const sheets = google.sheets({ version: 'v4', auth: client });
 
   const {_id, hospital,user,createdAt} = pdrequest[0];
+
   const requestParams = {
     spreadsheetId: '1xVVAaP5tRf30eCoVX5UJa5SbRglaeGG3kmxhCvvv5Dc',
     range: 'Data',
@@ -111,15 +124,8 @@ exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
   const responseData = await sheets.spreadsheets.values.append(
     requestParams
   );
-  console.log(responseData.status);
 
-  pdrequest = await PatientDataRequest.findByIdAndUpdate(
-    req.params.id,
-    {
-      isApproved: true,
-    },
-    { new: true }
-  );
+  console.log("sheet updated");
+  res.status(200).json({ success: true, data: responseData.status });
 
-  res.status(200).json({ success: true, data: pdrequest });
 });

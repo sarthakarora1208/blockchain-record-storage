@@ -53,3 +53,12 @@ exports.approvePatientDataRequest = async (patientDataRequestId) => {
     throw err;
   }
 };
+exports.addDataToSheet = async (patientDataRequestId) => {
+  try {
+    const res = await API.put(`${PDREQUESTS}/${patientDataRequestId}/addtosheets`);
+    const { data } = res.data;
+    return data;
+  } catch (err) {
+    throw err;
+  }
+}

@@ -3,6 +3,7 @@ const {
   getPatientDataRequests,
   getPatientDataRequestById,
   approvePatientDataRequest,
+  addDataToSheet
 } = require('../../API/patientDataRequests');
 const { getHospitalForUser, addHospital } = require('../../API/hospitalRequests');
 
@@ -86,6 +87,7 @@ exports.postAddPatientData = asyncHandler(async (req, res, next) => {
   console.log(id)
   try {
     const data = await approvePatientDataRequest(id);
+    addDataToSheet(id)
     req.flash('success_msg', 'Request approved for patient');
     res.redirect('/hospitals/dashboard');
   } catch (error) {
