@@ -58,7 +58,7 @@ li a:hover {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
-    z-index: 0;
+    z-index: -1;
 }
 
 #particles-js2 {
