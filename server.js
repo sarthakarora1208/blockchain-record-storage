@@ -84,7 +84,7 @@ const limiter = rateLimit({
   max: 100,
 });
 
-app.use(limiter);
+//app.use(limiter);
 
 // Prevent http param pollution
 app.use(hpp());

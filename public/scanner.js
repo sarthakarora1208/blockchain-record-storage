@@ -136,15 +136,15 @@ function tick() {
       // outputMessage.hidden = true;
       // outputData.parentElement.hidden = false;
       console.log(code.data);
-  
+
       y = JSON.parse(code.data);
       console.log(y);
+      address.innerHTML= y.address;
       fn.innerHTML= y.name;
       email.innerHTML=y.Email;
-      address.innerHTML= y.address;
       admissionDate.innerHTML=y.admissionDate;
       releaseDate.innerHTML=y.releaseDate;
-      display();
+      display(y.address);
         $('.ui.basic.modal.mod1').modal('show');
         x++;
     } else {
@@ -163,25 +163,26 @@ var report;// variable to store the report
 var privateKey;
 
 
-function display() {
-	
-    var userAddress = document.getElementById("address").value;
+function display(userAddress) {
+
+    console.log("User address" + userAddress);
     if(web3.utils.isAddress(userAddress))
     {
 
         web3.eth.accounts.wallet.create(1);
         var addr = web3.eth.accounts.wallet[0].address;// stores the user's address in a variable
+        console.log("Wallet address + "+ addr);
         privateKey = web3.eth.accounts.wallet[0].privateKey;
-        
+
 
         contract.methods.checkUser(userAddress)
             .call({from : addr})
             .then(function(result){
-            console.log(result);
-            if(result)
-            {
-                $('#check').css('display','inline');
-            }
+                  console.log(result);
+                  if(result)
+                {
+                   $('#check').css('display','inline');
+                }
             else
             {
               $('#cross').css('display','inline');
