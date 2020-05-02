@@ -104,10 +104,10 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
     console.log('');
     res.render('add-patient-data.ejs', {
       id,
-      user,
+      patient: user,
       comment,
       hospital,
-      owner: hospitalOwner,
+      user: hospitalOwner,
     });
   } catch (error) {
     if (error.response) {
