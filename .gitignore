@@ -1,3 +1,4 @@
 node_modules/
-config/*
+config/config.env
+config/baseURL.js
 
