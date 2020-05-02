@@ -99,15 +99,16 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
   try {
     const userData = await getMe(req.cookies['token']);
     let hospitalOwner = userData.data;
+    console.log(hospitalOwner)
     const data = await getPatientDataRequestById(id);
     const { user, comment, hospital } = data;
     console.log('');
     res.render('add-patient-data.ejs', {
       id,
-      patient: user,
+      user,
       comment,
       hospital,
-      user: hospitalOwner,
+      owner: hospitalOwner,
     });
   } catch (error) {
     if (error.response) {

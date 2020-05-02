@@ -1,5 +1,4 @@
 <%- include("partials/dashboardHeader") %>
-<%- include("partials/messages") %>
     <div class="ui dimmer" id="dimmer">
         <div class="ui massive text loader">
             <h5>Waiting for your Transaction to be mined....</h5>
@@ -20,12 +19,12 @@
             <form id="myForm" action="" method="POST" class="ui form">
                 <div class="field">
                     <div class="field"><label class="ui header">Patient Name</label>
-                        <div class="ui left icon input"><input id="patientName" aria-invalid="true" style="padding: 1;" type="sidplaceholder=" Enter Patient Name " name="patientName " type="text " value="<%=patient.name %>" readonly><i aria-hidden="true" class="user icon"></i></div>
+                        <div class="ui left icon input"><input id="patientName" aria-invalid="true" style="padding: 1;" type="sidplaceholder=" Enter Patient Name " name="patientName " type="text " value="<%=user.name %>" readonly><i aria-hidden="true" class="user icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
                     <div class="field"><label class="ui header">Patient's Email Address</label>
-                        <div class="ui left icon input"><input id="patientEmail" aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="patientEmail" type="text" value="<%= patient.email %>" readonly><i aria-hidden="true" class="mail icon"></i></div>
+                        <div class="ui left icon input"><input id="patientEmail" aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="patientEmail" type="text" value="<%= user.email %>" readonly><i aria-hidden="true" class="mail icon"></i></div>
                     </div>
                 </div>
                 <div class="field">
@@ -37,7 +36,7 @@
 
                 <div class="field">
                     <div class="field"><label class="ui header">Patient's Public key</label>
-                        <div class="ui left icon input"><input id="patientPublicKey" aria-invalid="true" style="padding: 0;" placeholder="Enter Public Key" name="patientPublicKey" type="text" value="<%= patient.publicKey %>" readonly><i aria-hidden="true" class="key icon"></i></div>
+                        <div class="ui left icon input"><input id="patientPublicKey" aria-invalid="true" style="padding: 0;" placeholder="Enter Public Key" name="patientPublicKey" type="text" value="<%= user.publicKey %>" readonly><i aria-hidden="true" class="key icon"></i></div>
                     </div>
                 </div>
 
@@ -84,7 +83,7 @@
                         <textarea id="symptoms" placeholder="Enter Symptoms" name="symptoms"></textarea>
                     </div>
                 </div>
-                <input id="email" aria-invalid="true" style="padding: 0;" placeholder="Email" name="email" type="hidden" value="<%= user.email %>" type="hidden">
+                <input id="email" aria-invalid="true" style="padding: 0;" placeholder="Email" name="email" type="hidden" value="<%= owner.email %>" type="hidden">
                 <div class="ui divider"></div>
                 <div style="background-color:#379683; color: white;" id="tranbtn" onclick="upload()" class="circular ui button">
                     <div class="content">Create Transaction</div>
