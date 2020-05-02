@@ -1,20 +1,18 @@
-const API = require('./api');
+const axios = require('axios');
 const { HOSPITALS } = require('../constants/routes');
 
-//export async function getHospitals() {
 exports.getHospitals = async () => {
   try {
-    const res = await API.get(`${HOSPITALS}`);
+    const res = await axios.get(`${HOSPITALS}`);
     return res.data;
   } catch (err) {
     throw err;
   }
 };
 
-//export async function getApprovedHospitals() {
 exports.getApprovedHospitals = async () => {
   try {
-    const res = await API.get(`${HOSPITALS}/approved`);
+    const res = await axios.get(`${HOSPITALS}/approved`);
     return res.data;
   } catch (err) {
     throw err;
@@ -23,17 +21,16 @@ exports.getApprovedHospitals = async () => {
 
 exports.getUnapprovedHospitals = async () => {
   try {
-    const res = await API.get(`${HOSPITALS}/unapproved`);
+    const res = await axios.get(`${HOSPITALS}/unapproved`);
     return res.data;
   } catch (err) {
     throw err;
   }
 };
 
-//export async function getHospitalById(id) {
 exports.getHospitalById = async (id) => {
   try {
-    const res = await API.get(`${HOSPITALS}/${id}`);
+    const res = await axios.get(`${HOSPITALS}/${id}`);
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -41,10 +38,11 @@ exports.getHospitalById = async (id) => {
   }
 };
 
-//export async function addHospital(hospitalData) {
-exports.addHospital = async (hospitalData) => {
+exports.addHospital = async (hospitalData, token) => {
   try {
-    const res = await API.post(`${HOSPITALS}`, hospitalData);
+    const res = await axios.post(`${HOSPITALS}`, hospitalData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -52,10 +50,11 @@ exports.addHospital = async (hospitalData) => {
   }
 };
 
-//export async function updateHospital(hospitalId, hospitalData) {
-exports.updateHospital = async (hospitalId, hospitalData) => {
+exports.updateHospital = async (hospitalId, hospitalData, token) => {
   try {
-    const res = await API.put(`${HOSPITALS}/${hospitalId}`, hospitalData);
+    const res = await axios.put(`${HOSPITALS}/${hospitalId}`, hospitalData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -63,10 +62,11 @@ exports.updateHospital = async (hospitalId, hospitalData) => {
   }
 };
 
-//export async function getHospitalsFor() {
-exports.getHospitalForUser = async () => {
+exports.getHospitalForUser = async (token) => {
   try {
-    const res = await API.get(`${HOSPITALS}/user`);
+    const res = await axios.get(`${HOSPITALS}/user`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -74,10 +74,13 @@ exports.getHospitalForUser = async () => {
   }
 };
 
-//export async function approveHospital(hospitalId) {
-exports.approveHospital = async (hospitalId) => {
+exports.approveHospital = async (hospitalId, token) => {
   try {
-    const res = await API.put(`${HOSPITALS}/${hospitalId}/approve`);
+    const res = await axios({
+      method: 'put',
+      url: `${HOSPITALS}/${hospitalId}/approve`,
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {

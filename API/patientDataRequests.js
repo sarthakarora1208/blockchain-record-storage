@@ -1,9 +1,9 @@
-const API = require('./api');
+const axios = require('axios');
 const { HOSPITALS, PDREQUESTS } = require('../constants/routes');
 
 exports.getPatientDataRequests = async (hospitalId) => {
   try {
-    const res = await API.get(`${HOSPITALS}/${hospitalId}${PDREQUESTS}`);
+    const res = await axios.get(`${HOSPITALS}/${hospitalId}/pdrequests`);
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -13,7 +13,7 @@ exports.getPatientDataRequests = async (hospitalId) => {
 
 exports.getPatientDataRequestById = async (id) => {
   try {
-    const res = await API.get(`${PDREQUESTS}/${id}`);
+    const res = await axios.get(`${PDREQUESTS}/${id}`);
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -21,11 +21,14 @@ exports.getPatientDataRequestById = async (id) => {
   }
 };
 
-exports.addPatientDataRequest = async (hospitalId, patientData) => {
+exports.addPatientDataRequest = async (hospitalId, patientData, token) => {
   try {
-    const res = await API.post(
+    const res = await axios.post(
       `${HOSPITALS}/${hospitalId}/pdrequests`,
-      patientData
+      patientData,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
     );
     const { data } = res.data;
     return data;
@@ -34,9 +37,11 @@ exports.addPatientDataRequest = async (hospitalId, patientData) => {
   }
 };
 
-exports.getPatientDataRequestForUser = async () => {
+exports.getPatientDataRequestForUser = async (token) => {
   try {
-    const res = await API.get(`${PDREQUESTS}/user`);
+    const res = await axios.get(`${PDREQUESTS}/user`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {
@@ -44,21 +49,30 @@ exports.getPatientDataRequestForUser = async () => {
   }
 };
 
-exports.approvePatientDataRequest = async (patientDataRequestId) => {
+exports.approvePatientDataRequest = async (patientDataRequestId, token) => {
   try {
-    const res = await API.put(`${PDREQUESTS}/${patientDataRequestId}/approve`);
+    const res = await axios({
+      method: 'put',
+      url: `${PDREQUESTS}/${patientDataRequestId}/approve`,
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {
     throw err;
   }
 };
+
 exports.addDataToSheet = async (patientDataRequestId) => {
   try {
-    const res = await API.put(`${PDREQUESTS}/${patientDataRequestId}/addtosheets`);
+    const res = await axios({
+      method: 'put',
+      url: `${PDREQUESTS}/${patientDataRequestId}/addtosheets`,
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {
     throw err;
   }
-}
+};

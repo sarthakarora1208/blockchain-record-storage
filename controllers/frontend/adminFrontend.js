@@ -25,7 +25,7 @@ exports.approveHospital = asyncHandler(async (req, res, next) => {
   console.log(id);
 
   try {
-    const data = await approveHospital(id);
+    const data = await approveHospital(id,req.cookies['token']);
     console.log(data);
     res.redirect('/admin/dashboard');
   } catch (error) {

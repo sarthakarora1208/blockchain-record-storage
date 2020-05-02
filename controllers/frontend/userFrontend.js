@@ -7,7 +7,7 @@ const { getApprovedHospitals } = require('../../API/hospitalRequests');
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
   try {
-    let data = await getPatientDataRequestForUser();
+    let data = await getPatientDataRequestForUser(req.cookies['token']);
     console.log(data.length);
     // if already has made a request
     if (data.length === 1) {
@@ -48,9 +48,13 @@ exports.getRequestData = asyncHandler(async (req, res, next) => {
 
 exports.postRequestData = asyncHandler(async (req, res, next) => {
   const { hospitalId, comment } = req.body;
-  console.log("Hospital Id" + hospitalId)
+  console.log('Hospital Id' + hospitalId);
   try {
-    let data = await addPatientDataRequest(hospitalId, { comment });
+    let data = await addPatientDataRequest(
+      hospitalId,
+      { comment },
+      req.cookies['token']
+    );
     console.log(data);
     res.redirect('/users/dashboard');
   } catch (error) {

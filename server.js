@@ -15,7 +15,6 @@ const connectDB = require('./config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
 
-
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
@@ -47,7 +46,10 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
+app.use(function (req, res, next) {
+  console.log('Requested path: %s', req.path);
+  next();
+});
 // File uploading
 
 // Sanitize data
@@ -71,11 +73,8 @@ app.use(
 // Connect flash
 app.use(flash());
 
-
-
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
-
 
 // Rate limiting
 const limiter = rateLimit({
@@ -103,9 +102,9 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => res.render('index'));
-app.get('/verify',(req,res) => res.render('verify-address'))
-app.get('/qrscanner',(req,res) => res.render('qrscanner'))
-app.get('/contactUs',(req,res) => res.render('contactUs'))
+app.get('/verify', (req, res) => res.render('verify-address'));
+app.get('/qrscanner', (req, res) => res.render('qrscanner'));
+app.get('/contactUs', (req, res) => res.render('contactUs'));
 // Mount routers
 app.use('/auth', authFrontend);
 app.use('/users', userFrontend);
@@ -125,7 +124,6 @@ const server = app.listen(
     `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
   )
 );
-
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {

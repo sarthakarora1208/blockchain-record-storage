@@ -1,29 +1,31 @@
 const asyncHandler = require('./async');
-const { getMe } = require('../API/authRequests');
+const jwt = require('jsonwebtoken');
+const {getMe} = require('../API/authRequests')
 
-exports.checkIfAuthenticated = asyncHandler(async (req, res, next) => {
-  if (typeof localStorage === "undefined" || localStorage === null) {
-    var LocalStorage = require('node-localstorage').LocalStorage;
-    localStorage = new LocalStorage('./scratch');
-  }
-  console.log(localStorage.getItem('token'));
+exports.checkIfAuthenticated = asyncHandler(async(req,res,next) => {
+   //console.log("middleware");
+   const token = req.cookies['token']
+   //console.log("Token from cookie is");
+   //console.log(token)
 
-  //console.log('Token is' + req.cookies['token']);
-  //let token = req.cookies['token'];
-  if (!token) {
-  req.flash('error_message', 'Please log in to view that resouce');
-    res.redirect('/auth/login');
-  } else {
-    try {
+   if(!token){
+    console.log("Token not found")
+    req.flash('error_msg', 'Please log in to view that resource');
+    res.redirect('/users/login');
+   }
+   try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+    const data = await getMe(token);
+    console.log(data);
+    let user = data.data;
+    console.log(user)
+    req.user = user;
+    next()
 
-      data = await getMe();
-      req.user = data.data;
-      next();
-    } catch (error) {
+   } catch(error){
       console.log(error);
-      req.flash('error_message', 'Unauthorized to visit');
+      req.flash('error_message', 'Unauthorized to visit')
       res.redirect('/auth/login');
     }
-
-  //}
-});
+})
