@@ -9,24 +9,29 @@ const {
   getHospitalForUser,
   addHospital,
 } = require('../../API/hospitalRequests');
+const { getMe } = require('../../API/authRequests');
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
   let pdRequests = [];
-  try {
-    let data = await getHospitalForUser(req.cookies['token']);
-    // if already has made a request
 
+  try {
+    const token = req.cookies['token'];
+    const userData = await getMe(token);
+    let user = userData.data;
+    let data = await getHospitalForUser(token);
+    // if already has made a request
     if (data.length === 1) {
       const hospital = data[0];
       data = await getPatientDataRequests(hospital.id);
       pdRequests = [...data];
+
       res.render('hospital-dashboardNext.ejs', {
-        user: req.user,
+        user,
         pdRequests,
         hospital,
       });
     } else {
-      res.render('hospital-dashboard.ejs', { user: req.user });
+      res.render('hospital-dashboard.ejs', { user });
     }
   } catch (error) {
     console.log(error);
@@ -38,7 +43,9 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 });
 
 exports.getAddHospital = asyncHandler(async (req, res, next) => {
-  res.render('add-hospital', { user: req.user });
+  const userData = await getMe(req.cookies['token']);
+  let user = userData.data;
+  res.render('add-hospital', { user });
 });
 
 exports.postAddHospital = asyncHandler(async (req, res, next) => {
@@ -90,6 +97,8 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
 exports.getAddPatientData = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   try {
+    const userData = await getMe(req.cookies['token']);
+    let hospitalOwner = userData.data;
     const data = await getPatientDataRequestById(id);
     const { user, comment, hospital } = data;
     console.log('');
@@ -98,7 +107,7 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
       user,
       comment,
       hospital,
-      owner: req.user,
+      owner: hospitalOwner,
     });
   } catch (error) {
     if (error.response) {

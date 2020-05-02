@@ -4,20 +4,24 @@ const {
   addPatientDataRequest,
 } = require('../../API/patientDataRequests');
 const { getApprovedHospitals } = require('../../API/hospitalRequests');
+const { getMe } = require('../../API/authRequests');
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
   try {
-    let data = await getPatientDataRequestForUser(req.cookies['token']);
-    console.log(data.length);
+    const token = req.cookies['token'];
+    const userData = await getMe(token);
+    let user = userData.data;
+
+    let data = await getPatientDataRequestForUser(token);
     // if already has made a request
     if (data.length === 1) {
       res.render('user-dashboardNext.ejs', {
-        user: req.user,
+        user,
         pdRequest: data[0],
       });
     } else {
       // if the request is not made yet
-      res.render('user-dashboardFirst.ejs', { user: req.user });
+      res.render('user-dashboardFirst.ejs', { user });
     }
   } catch (error) {
     console.log(error);
@@ -31,10 +35,12 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 exports.getRequestData = asyncHandler(async (req, res, next) => {
   let hospitals = [];
   try {
+    const userData = await getMe(token);
+    let user = userData.data;
     let data = await getApprovedHospitals();
     const hospitals = [...data.data];
     res.render('user-request-data.ejs', {
-      user: req.user,
+      user,
       hospitals,
     });
   } catch (error) {
