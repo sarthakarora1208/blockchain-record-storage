@@ -126,7 +126,7 @@ exports.getForgotPassword = asyncHandler(async (req, res, next) => {
 exports.getLogout = asyncHandler(async (req, res, next) => {
   try {
     const data = await logout(req.cookies['token']);
-    req.clearCookie('token');
+    res.clearCookie('token');
     req.flash('success_msg', 'Logged out!');
     res.redirect('/auth/login');
   } catch (error) {
