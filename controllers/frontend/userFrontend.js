@@ -18,9 +18,13 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
       res.render('user-dashboardNext.ejs', {
         user,
         pdRequest: data[0],
+        timeStamp: new Date(Date.parse(data[0].createdAt))
+          .toUTCString()
+          .slice(0, 16),
       });
     } else {
       // if the request is not made yet
+
       res.render('user-dashboardFirst.ejs', { user });
     }
   } catch (error) {
@@ -35,10 +39,10 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 exports.getRequestData = asyncHandler(async (req, res, next) => {
   let hospitals = [];
   try {
-    const userData = await getMe(token);
+    const userData = await getMe(req.cookies['token']);
     let user = userData.data;
     let data = await getApprovedHospitals();
-    const hospitals = [...data.data];
+    hospitals = [...data.data];
     res.render('user-request-data.ejs', {
       user,
       hospitals,
