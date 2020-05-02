@@ -1,5 +1,5 @@
 node_modules/
-config/config.env
-config/baseURL.js
-config/keys.json
+config/*
+config/
+config/
 
