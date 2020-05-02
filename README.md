@@ -23,7 +23,13 @@ npm run server
 
 The server will be running on [http://localhost:5000/](http://localhost:5000/)
 
-
+## Demo Video
+![](demo/1.gif)
+![](demo/2.gif)
+![](demo/3.gif)
+![](demo/4.gif)
+![](demo/5.gif)
+![](demo/6.gif)
 
 ## App Info
 
