@@ -97,6 +97,27 @@ exports.approvePatientDataRequest = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: pdrequest });
 });
 
+// @desc      Delete patient data request
+// @route     DELETE /api/v1/pdrequests/:id
+// @access    Private
+exports.deletePatientDataRequest = asyncHandler(async (req, res, next) => {
+  const pdrequest = await PatientDataRequest.findById(req.params.id);
+
+  if (!pdrequest) {
+    return next(
+      new ErrorResponse(`No pdrequest with the id of ${req.params.id}`, 404)
+    );
+  }
+  // Make sure pdrequest belongs to user or user is admin
+  if (pdrequest.user.toString() !== req.user.id) {
+    return next(new ErrorResponse(`Not authorized to update pdrequest`, 401));
+  }
+  await pdrequest.remove();
+  res.status(200).json({
+    success: true,
+    data: {}
+  });
+});
 
 exports.addDataToSheet = asyncHandler(async (req, res, next) => {
 
