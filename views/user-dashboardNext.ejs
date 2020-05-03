@@ -1,6 +1,5 @@
 <%- include("partials/dashboardHeader") %>
 
-<%- include("partials/messages") %>
 
     <h3 style="font-size: 2.5em; text-align: center;" class="ml15">
         <span style="color:white; letter-spacing: normal;" class="word">Hello</span>
@@ -10,6 +9,7 @@
 
     <div class="tab">
 
+      <%- include("partials/messages") %>
         <div style="height: 100%;" class="ui dimmer" id="dimmer">
             <div class="ui massive text loader">
                 <h5>Waiting for your QR code to be generated...</h5>

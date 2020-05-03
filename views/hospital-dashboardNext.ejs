@@ -1,12 +1,12 @@
 <%- include("partials/dashboardHeader") %>
-<%- include("partials/messages") %>
     <div style="margin-top: 50px;font-size: 2.5em; text-align: center;">
-    <h3 class="ml15">le=""
+    <h3 class="ml15">
         <span style="color:#5CDB95; letter-spacing: normal;" class="word"><%= hospital.name %> </span>
     </h3>
         <span style="color:white; letter-spacing: normal;" >Status: <%= hospital.isApproved  ? "Approved": "Approval Pending" %></span>
     </div>
     <div class="tab">
+        <%- include("partials/messages") %>
         <table style="background-color: white; margin: 0 auto; border: 1px solid black; border-radius: 15px;" class="striped centered responsive-table">
             <thead>
                 <tr>
