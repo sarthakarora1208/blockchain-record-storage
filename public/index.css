@@ -1,8 +1,10 @@
-html,body {
+html,
+body {
     font-family: 'Roboto', sans-serif;
-    height:100%;
-    margin:0;
-    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    overflow-x: inherit;
+    scroll-behavior: smooth;
 }
 
 #showcase {
@@ -175,7 +177,8 @@ h3.ml8 {
     h1.ml8 {
         display: inline-block;
         font-weight: 900;
-        font-size: 4.4em;
+        font-size: 3.2em;
+        /* text-align: center; */
         color: #fff;
         width: 2em;
         height: 2em;

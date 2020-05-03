@@ -41,9 +41,9 @@
                         <div class="field">
                             <div class="ui radio checkbox"><input id="owner" name="role" type="radio" value="owner"><label for="Owner">Hospital Owner</label></div>
                         </div>
-                        <div class="field">
+                        <!-- <div class="field">
                             <div class="ui radio checkbox"><input id="admin" name="role" type="radio" value="admin"><label for="Admin">Admin</label></div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="field">
                         <div class="field">
@@ -59,6 +59,8 @@
                     <input id="publicKey" type="hidden" aria-invalid="true" name="publicKey" type="text" value="">
                     <div class="ui divider"></div>
                     <div style="background-color:#379683; color: white;" onclick="register()" class="circular ui button">Generate Keys</div>
+
+                    <p style="color: black;">Already have an account? <a style="color:#379683;" href="/auth/login"> Login</a></p>
         </div>
 
 
@@ -81,6 +83,8 @@
             <div style="text-align: center;" class="actions">
                 <button class="ui green basic ok inverted  button" onclick="formSubmit()"><i class="checkmark icon"></i>Register</button>
             </div>
+
+
         </div>
         </form>
     </div>
