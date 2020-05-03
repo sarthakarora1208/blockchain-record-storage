@@ -104,6 +104,8 @@ var tx;
 // This function runs onClick of the button Submit in the upload.ejs file
 // change this functionality as you want
 async function upload() {
+	// check value for img = document.getElementById("imgFile").files[0];
+	// if null disable button else carry on
     $('.ui.basic.modal.mod1').modal('show');
     var ipfsURL;
 	// storing all the form data in variables
