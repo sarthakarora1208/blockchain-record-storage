@@ -1,7 +1,7 @@
 <%- include("partials/patientDataHeader") %>
     <div class="ui dimmer" id="dimmer">
         <div class="ui massive text loader">
-            <h5>Waiting for your Transaction to be mined....</h5>
+            <h5>Waiting for your transaction to be mined....</h5>
         </div>
     </div>
     <!-- FORM -->
@@ -124,6 +124,14 @@
             <div class="ui icon header">
                 <i style="color: red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em;">Transaction
                 <span style="color:red">Failed!</span></span>
+            </div>
+            <div class="actions">
+                <button class="ui red basic ok inverted button"><i class="remove icon"></i>Close</button>
+            </div>
+        </div>
+        <div style="margin: 0 auto;" class="ui basic modal mod4">
+            <div class="ui icon header">
+                <i style="color:red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em;">Please upload image of the report!</span>
             </div>
             <div class="actions">
                 <button class="ui red basic ok inverted button"><i class="remove icon"></i>Close</button>

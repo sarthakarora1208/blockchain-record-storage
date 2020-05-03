@@ -104,44 +104,52 @@ var tx;
 // This function runs onClick of the button Submit in the upload.ejs file
 // change this functionality as you want
 async function upload() {
-	// check value for img = document.getElementById("imgFile").files[0];
-	// if null disable button else carry on
-    $('.ui.basic.modal.mod1').modal('show');
-    var ipfsURL;
-	// storing all the form data in variables
-    patientPublicKey = document.getElementById('patientPublicKey').value; // we dont need to ask the user for this
-    addr = EthCrypto.publicKey.toAddress(patientPublicKey);
-
-	var name = document.getElementById('patientName').value,
-		hospitalName = document.getElementById('hospitalName').value,
-		admissionDate = document.getElementById('admissionDate').value,
-		releaseDate = document.getElementById('releaseDate').value,
-		symptoms = document.getElementById('symptoms').value,
-		patientEmail = document.getElementById('patientEmail').value,
-        comments = document.getElementById('comments').value,
-        img = document.getElementById("imgFile").files[0];
-    const reader = new FileReader();
-    reader.onload = async function () {
-        const file = { path: "test", content: buffer.Buffer(reader.result) };
-        for await (const result of ipfs.add(file)) {
-            console.log(result.cid.string);
-            ipfsURL = `https://gateway.ipfs.io/ipfs/${result.cid.string}`
-        }
-        report = await {
-                name: name,
-                hospitalName: hospitalName,
-                admissionDate: admissionDate,
-                releaseDate: releaseDate,
-                symptoms: symptoms,
-                email: patientEmail,
-                comments: comments,
-                address: addr,
-                ipfsURL: ipfsURL
-        };
-	    encryptt(await report);
-    };
-    reader.readAsArrayBuffer(img);
-
+	
+	var img = document.getElementById("imgFile").files[0];
+	if(img){
+        // check value for img = document.getElementById("imgFile").files[0];
+		// if null disable button else carry on
+		$('.ui.basic.modal.mod1').modal('show');
+		var ipfsURL;
+		// storing all the form data in variables
+		patientPublicKey = document.getElementById('patientPublicKey').value; // we dont need to ask the user for this
+		addr = EthCrypto.publicKey.toAddress(patientPublicKey);
+	
+		var name = document.getElementById('patientName').value,
+			hospitalName = document.getElementById('hospitalName').value,
+			admissionDate = document.getElementById('admissionDate').value,
+			releaseDate = document.getElementById('releaseDate').value,
+			symptoms = document.getElementById('symptoms').value,
+			patientEmail = document.getElementById('patientEmail').value,
+			comments = document.getElementById('comments').value;
+			
+		const reader = new FileReader();
+		reader.onload = async function () {
+			const file = { path: "test", content: buffer.Buffer(reader.result) };
+			for await (const result of ipfs.add(file)) {
+				console.log(result.cid.string);
+				ipfsURL = `https://gateway.ipfs.io/ipfs/${result.cid.string}`
+			}
+			report = await {
+					name: name,
+					hospitalName: hospitalName,
+					admissionDate: admissionDate,
+					releaseDate: releaseDate,
+					symptoms: symptoms,
+					email: patientEmail,
+					comments: comments,
+					address: addr,
+					ipfsURL: ipfsURL
+			};
+			encryptt(await report);
+		};
+		reader.readAsArrayBuffer(img);
+	
+	}else{
+		$('.ui.basic.modal.mod4').modal('show');
+	}
+	
+   
 
 
 
@@ -159,7 +167,7 @@ async function encryptt(report) {
 	EthCrypto.encryptWithPublicKey(
 		patientPublicKey, // publicKey
 		report // message
-	).then(function(result) {
+	).then(function(result){
 		encr = result;
 		//the final string variable is below
 		ciph = EthCrypto.cipher.stringify(encr); //this has to be uploaded
@@ -212,7 +220,3 @@ function addData(email) {
 }
 
 console.log(ipfs);
-async function addFile(){
-
-
-}
