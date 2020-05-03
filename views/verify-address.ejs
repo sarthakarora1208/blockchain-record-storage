@@ -13,7 +13,7 @@
             <form id="myForm" action="/verify" method="GET" class="ui form">
                 <div class="field">
                     <div class="field"><label>Address</label>
-                        <div class="ui left icon input"><input id="addr" style="padding: 1%;" aria-invalid="true" placeholder="Enter Your Address" name="address" type="text" value=""><i aria-hidden="true" class="key icon"></i></div>
+                        <div class="ui left icon input"><input id="addr" style="padding: 1%;" aria-invalid="true" placeholder="Enter Your Address" name="address" type="text" value="<%= typeof address !== 'undefined' ? address : '' %>"><i aria-hidden="true" class="key icon"></i></div>
                     </div>
                 </div>
                 <div class="ui divider"></div>

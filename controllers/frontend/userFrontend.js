@@ -2,6 +2,7 @@ const asyncHandler = require('../../middleware/async');
 const {
   getPatientDataRequestForUser,
   addPatientDataRequest,
+  deletePatientDataRequestById,
 } = require('../../API/patientDataRequests');
 const { getApprovedHospitals } = require('../../API/hospitalRequests');
 const { getMe } = require('../../API/authRequests');
@@ -69,10 +70,22 @@ exports.postRequestData = asyncHandler(async (req, res, next) => {
     res.redirect('/users/dashboard');
   } catch (error) {
     console.log(error);
-    console.log(error);
     if (error.response) {
       req.flash('error_msg', error.response.data.error);
       res.redirect('/users/request-data');
     }
   }
 });
+exports.deleteRequestData = asyncHandler(async (req,res,next) => {
+  try {
+      let data = await getPatientDataRequestForUser(req.cookies['token']);
+      await deletePatientDataRequestById(data[0]._id);
+      res.redirect('/users/dashboard')
+  } catch (error){
+    console.log(error);
+    if (error.response) {
+      req.flash('error_msg', error.response.data.error);
+      res.redirect('/users/dashboard');
+    }
+  }
+})

@@ -5,7 +5,8 @@ const {
   addPatientDataRequest,
   getPatientDataRequestForUser,
   approvePatientDataRequest,
-  addDataToSheet
+  addDataToSheet,
+  deletePatientDataRequest
 } = require('../controllers/patientDataRequests');
 
 const router = express.Router({ mergeParams: true });
@@ -21,7 +22,7 @@ router
   .route('/user')
   .get(protect, authorize('user'), getPatientDataRequestForUser);
 
-router.route('/:id').get(getPatientDataRequest);
+router.route('/:id').get(getPatientDataRequest).delete(protect,deletePatientDataRequest)
 
 router
   .route('/:id/approve')

@@ -1,5 +1,4 @@
 <%- include("partials/dashboardHeader") %>
-<%- include("partials/messages") %>
 
     <div class="ui dimmer" id="dimmer">
         <div class="ui massive text loader">
@@ -13,8 +12,8 @@
     <h3 style="font-size: 2.5em; text-align: center;" class="ml15">
         <span style="color: red; letter-spacing: normal;" class="word">Unapproved</span>
         <span style="color: white; letter-spacing: normal;" class="word">Hospitals</span>
+        <%- include("partials/messages") %>
     </h3>
-
     <% hospitals.map(hospital=> { %>
         <div class="tab">
             <div style="margin:0 auto; max-width: 350px;  border-radius: 20px;" class="card sticky-action">

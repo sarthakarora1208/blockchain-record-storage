@@ -21,6 +21,16 @@ exports.getPatientDataRequestById = async (id) => {
   }
 };
 
+exports.deletePatientDataRequestById = async (id) => {
+  try {
+    const res = await axios.get(`${PDREQUESTS}/${id}`);
+    const { data } = res.data;
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 exports.addPatientDataRequest = async (hospitalId, patientData, token) => {
   try {
     const res = await axios.post(
@@ -62,7 +72,6 @@ exports.approvePatientDataRequest = async (patientDataRequestId, token) => {
     throw err;
   }
 };
-
 exports.addDataToSheet = async (patientDataRequestId) => {
   try {
     const res = await axios({

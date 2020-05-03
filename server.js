@@ -14,7 +14,7 @@ const errorHandler = require('./middleware/error.js');
 const connectDB = require('./config/db');
 const flash = require('connect-flash');
 const session = require('express-session');
-
+const url = require('url');
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
@@ -102,7 +102,10 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => res.render('index'));
-app.get('/verify', (req, res) => res.render('verify-address'));
+app.get('/verify', (req, res) => {
+  const queryObject = url.parse(req.url,true).query;
+  //console.log(queryObject.address)
+  res.render('verify-address',{address: queryObject.address})});
 app.get('/qrscanner', (req, res) => res.render('qrscanner'));
 app.get('/contactUs', (req, res) => res.render('contactUs'));
 // Mount routers
