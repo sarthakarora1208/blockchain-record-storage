@@ -9,10 +9,10 @@ const { checkIfAuthenticated } = require('../../middleware/authFrontend');
 
 const router = express.Router();
 
+router.route('/delete-request').post(deleteRequestData);
 router.route('/dashboard').get(checkIfAuthenticated, dashboard);
 router
   .route('/request-data')
   .get(checkIfAuthenticated, getRequestData)
   .post(postRequestData);
-router.route('/delete').post(deleteRequestData);
 module.exports = router;

@@ -21,9 +21,12 @@ exports.getPatientDataRequestById = async (id) => {
   }
 };
 
-exports.deletePatientDataRequestById = async (id) => {
+exports.deletePatientDataRequestById = async (id,token) => {
   try {
-    const res = await axios.get(`${PDREQUESTS}/${id}`);
+    console.log(id)
+    const res = await axios.delete(`${PDREQUESTS}/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     const { data } = res.data;
     return data;
   } catch (err) {

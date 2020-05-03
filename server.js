@@ -46,10 +46,10 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-app.use(function (req, res, next) {
-  console.log('Requested path: %s', req.path);
-  next();
-});
+// app.use(function (req, res, next) {
+//   console.log('Requested path: %s', req.path);
+//   next();
+// });
 // File uploading
 
 // Sanitize data

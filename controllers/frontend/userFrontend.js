@@ -67,6 +67,7 @@ exports.postRequestData = asyncHandler(async (req, res, next) => {
       req.cookies['token']
     );
     console.log(data);
+    req.flash('success_msg', 'Request made successfully!');
     res.redirect('/users/dashboard');
   } catch (error) {
     console.log(error);
@@ -78,8 +79,10 @@ exports.postRequestData = asyncHandler(async (req, res, next) => {
 });
 exports.deleteRequestData = asyncHandler(async (req,res,next) => {
   try {
+
       let data = await getPatientDataRequestForUser(req.cookies['token']);
-      await deletePatientDataRequestById(data[0]._id);
+      const responseData = await deletePatientDataRequestById(data[0]._id,req.cookies['token']);
+
       res.redirect('/users/dashboard')
   } catch (error){
     console.log(error);

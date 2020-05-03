@@ -22,7 +22,7 @@ router
   .route('/user')
   .get(protect, authorize('user'), getPatientDataRequestForUser);
 
-router.route('/:id').get(getPatientDataRequest).delete(protect,deletePatientDataRequest)
+router.route('/:id').get(getPatientDataRequest).delete(protect,authorize('user'),deletePatientDataRequest)
 
 router
   .route('/:id/approve')
