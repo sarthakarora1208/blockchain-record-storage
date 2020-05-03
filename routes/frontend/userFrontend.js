@@ -3,6 +3,7 @@ const {
   dashboard,
   getRequestData,
   postRequestData,
+  deleteRequestData
 } = require('../../controllers/frontend/userFrontend');
 const { checkIfAuthenticated } = require('../../middleware/authFrontend');
 
@@ -13,5 +14,5 @@ router
   .route('/request-data')
   .get(checkIfAuthenticated, getRequestData)
   .post(postRequestData);
-
+router.route('/delete').post(deleteRequestData);
 module.exports = router;
