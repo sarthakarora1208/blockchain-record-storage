@@ -1,9 +1,9 @@
 <%- include("partials/dashboardHeader") %>
-    <div style="margin-top: 50px;font-size: 2.5em; text-align: center;">
+    <div style="margin-top: 50px; text-align: center;">
     <h3 class="ml15">
-        <span style="color:#5CDB95; letter-spacing: normal;" class="word"><%= hospital.name %> </span>
+        <span style="color:#5CDB95; letter-spacing: normal;font-size: 1em;" class="word"><%= hospital.name %> </span>
     </h3>
-        <span style="color:white; letter-spacing: normal;" >Status: <%= hospital.isApproved  ? "Approved": "Approval Pending" %></span>
+        <span style="color:white; letter-spacing: normal;font-size: 1.5em" >Status: <%= hospital.isApproved  ? "Approved": "Approval Pending" %></span>
     </div>
     <div class="tab">
         <%- include("partials/messages") %>
