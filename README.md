@@ -5,6 +5,7 @@
 Live preview of the application:
 
 [https://thewellpass.herokuapp.com/](https://thewellpass.herokuapp.com/)
+Youtube Video: [https://www.youtube.com/watch?v=pB1RmJbT2nA](https://www.youtube.com/watch?v=pB1RmJbT2nA)
 ## Setup
 
 Rename "config/config.env.env" to "config/config.env" and update the values/settings to your own
