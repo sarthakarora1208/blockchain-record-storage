@@ -104,7 +104,7 @@ var tx;
 // This function runs onClick of the button Submit in the upload.ejs file
 // change this functionality as you want
 async function upload() {
-	
+
 	var img = document.getElementById("imgFile").files[0];
 	if(img){
         // check value for img = document.getElementById("imgFile").files[0];
@@ -114,7 +114,7 @@ async function upload() {
 		// storing all the form data in variables
 		patientPublicKey = document.getElementById('patientPublicKey').value; // we dont need to ask the user for this
 		addr = EthCrypto.publicKey.toAddress(patientPublicKey);
-	
+
 		var name = document.getElementById('patientName').value,
 			hospitalName = document.getElementById('hospitalName').value,
 			admissionDate = document.getElementById('admissionDate').value,
@@ -122,7 +122,7 @@ async function upload() {
 			symptoms = document.getElementById('symptoms').value,
 			patientEmail = document.getElementById('patientEmail').value,
 			comments = document.getElementById('comments').value;
-			
+
 		const reader = new FileReader();
 		reader.onload = async function () {
 			const file = { path: "test", content: buffer.Buffer(reader.result) };
@@ -144,12 +144,12 @@ async function upload() {
 			encryptt(await report);
 		};
 		reader.readAsArrayBuffer(img);
-	
+
 	}else{
 		$('.ui.basic.modal.mod4').modal('show');
 	}
-	
-   
+
+
 
 
 

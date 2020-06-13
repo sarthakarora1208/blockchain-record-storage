@@ -11,6 +11,10 @@
   "author": "Sarthak Arora,Pranav Garg,Varun Ramnani,Akshit Suri",
   "license": "MIT",
   "dependencies": {
+    "@arcblock/forge-util": "^1.2.13",
+    "@arcblock/forge-wallet": "^1.2.13",
+    "@arcblock/graphql-client": "^1.2.13",
+    "@arcblock/mcrypto": "^1.2.13",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
